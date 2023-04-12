@@ -1,3 +1,153 @@
+
+.main{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f8ff;
+}
+.listGroup{
+
+  display: flex;
+  width: 550px;
+  
+  justify-content: space-between;
+  
+
+}
+.lista{
+  font-size: 32px;
+  list-style-type: none;
+  padding:0px;
+  width: 435px;
+  height: 1054px;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+.lista li{
+  padding: 70px 0px 70px 80px;
+  background-color: aliceblue;
+  font-family: var(--font-general);
+  font-weight: var(--font-bold);
+  color: var(--color-dark-blue);
+  text-align: left;
+  padding: none;
+}
+.sortingIcon{
+  margin-top: 90px;
+}
+
+/* right side */
+.mainRight{
+  width: 1500px;
+  height: 100vh;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+  
+}
+.bar{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 105px;
+  align-items: center;
+
+}
+.digimonLogoGroup{
+display: flex;
+align-items: center;
+
+}
+.digimonLogoGroup p{
+  font-family: var(--font-general);
+  font-size: 20px;
+  font-weight: var(--font-bolder);
+  color: var(--color-dark-blue);
+}
+
+.digimonLogo{
+  margin-left: 15px;
+}
+
+.digidexGroup{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.digidexLogo{
+  margin-right: 30px;
+  width: 60px;
+  height: 60px;
+}
+
+.digidexLogoText{
+  height: 60px;
+  width: 200px;
+}
+
+.mainDetailsGroup{
+  width: 90%;  
+  display: flex;
+  padding: 30px 20px 120px 20px;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 5%;
+  gap: 20px;
+  justify-content: center;
+
+}
+
+.mainDetailsGroup h3{
+  font-family: var(--fonts-family);
+  font-weight: var(--font-bold);
+  color: var(--color-dark-blue);
+  font-size: 35px;
+}
+
+.mainDetailsGroup h4{
+  font-family: var(--fonts-family);
+  font-weight: var(--font-bolder);
+  color: var(--color-dark-blue);
+  font-size: 25px;
+  text-align: center;
+}
+
+.mainDetailsGroup p{
+  font-family: var(--fonts-family);
+  font-weight: var(--font-regular);
+  color: var(--color-dark-blue);
+  font-size: 25px;
+  text-align: center;
+}
+
+.digimonDetailsGroup{
+  display: flex;
+  gap: 170px;
+}
+
+.footerDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px 0 50px 0;
+  gap: 200px;
+}
+.footerDiv p{
+  font-family: var(--fonts-family);
+  font-weight: var(--font-);
+
+}
+
+.socialGroup{
+  display: flex;
+  gap: 35px;
+}
+
+
+
+/* REFERENCE 
 .main {
   display: flex;
   flex-direction: column;
@@ -130,7 +280,7 @@
   z-index: -1;
 }
 
-/* Conic Gradient Animation */
+/* Conic Gradient Animation 
 .thirteen::before {
   animation: 6s rotate linear infinite;
   width: 200%;
@@ -138,7 +288,7 @@
   background: var(--tile-border);
 }
 
-/* Inner Square */
+/* Inner Square 
 .thirteen::after {
   inset: 0;
   padding: 1px;
@@ -151,7 +301,7 @@
   background-clip: content-box;
 }
 
-/* Enable hover only on non-touch devices */
+/* Enable hover only on non-touch devices 
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -173,7 +323,7 @@
   }
 }
 
-/* Mobile and Tablet */
+/* Mobile and Tablet 
 @media (max-width: 1023px) {
   .content {
     padding: 4rem;
@@ -269,3 +419,4 @@
     transform: rotate(0deg);
   }
 }
+*/

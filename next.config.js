@@ -5,4 +5,15 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig, {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'digimon-api.com',
+        port: '',
+        pathname: '/images/digimon/',
+      },
+    ],
+  },
+}

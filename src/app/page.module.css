@@ -7,38 +7,133 @@
 .listGroup{
 
   display: flex;
-  width: 550px;
-  
-  justify-content: space-between;
-  
+  flex-direction: column;
+  width: 17vw;
 
 }
+
+.extraList{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 110px;
+}
+
+/* sortIcon */
+.sortingIcon{
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+  background-color:var(--color-background-light-blue);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.sorting{
+  flex-direction: column-reverse;
+}
+
+.sortingIcon div{
+  height: 4px;
+  background-color: black;
+  border-radius: 20%;
+}
+.firstLine{
+  
+  width: 40px;
+}
+.secondLine{
+ 
+  width: 30px;
+}
+.thirdLine{
+ 
+  width: 20px;
+}
+.forthLine{
+ 
+  width: 10px;
+}
+
 .lista{
   font-size: 32px;
   list-style-type: none;
-  padding:0px;
-  width: 435px;
-  height: 1054px;
+  padding:0%;
+  height: 70vh;
   overflow-y: scroll;
-  overflow-x: visible;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  
 }
-.lista li{
-  padding: 70px 0px 70px 80px;
+
+.lista button{
+  border: 0;
   background-color: aliceblue;
-  font-family: var(--font-general);
+  cursor: pointer;
+  
+
+}
+
+
+.digimonInList{
+  font-family: var(--fonts-family);
   font-weight: var(--font-bold);
   color: var(--color-dark-blue);
   text-align: left;
-  padding: none;
+  font-size: 22px;
+  padding: 70px 1vw 70px 1vw;
+
 }
-.sortingIcon{
-  margin-top: 90px;
+
+.digimonInList:hover{
+  font-size: 25px;
+  text-align: center;
 }
+
+
+
+
+
+.lista::-webkit-scrollbar {
+  width: 1vh;
+  
+}
+.lista:hover::-webkit-scrollbar {
+  width: 2vh;
+  
+}
+
+.lista::-webkit-scrollbar-track {
+  background: #ACACAC; 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+.lista::-webkit-scrollbar-thumb {
+  background: #5E5E5E; 
+  border-radius: 20px;
+}
+.lista:hover::-webkit-scrollbar-track {
+  width: 2vh;
+}
+
+/* Handle on hover */
+.lista:hover::-webkit-scrollbar-thumb {
+  background: #4b4b4b; 
+  width: 2vh;
+}
+
+
+
 
 /* right side */
 .mainRight{
-  width: 1500px;
-  height: 100vh;
+  width: 75vw;
+  height: 95vh;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
@@ -89,22 +184,107 @@ align-items: center;
 .mainDetailsGroup{
   width: 90%;  
   display: flex;
-  padding: 30px 20px 120px 20px;
-  flex-direction: column;
+  padding: 30px 20px 80px 20px;
+  flex-direction: row;
   align-items: center;
   background-color: white;
   border-radius: 5%;
-  gap: 20px;
-  justify-content: center;
+  height: 70vh;
+  overflow-y: scroll;
+  justify-content: space-between;
+
 
 }
 
-.mainDetailsGroup h3{
+.mainDetailsGroup::-webkit-scrollbar {
+  width: 1vh;
+  position: absolute;
+  
+}
+.mainDetailsGroup:hover::-webkit-scrollbar {
+  width: 2vh;
+  
+}
+
+.mainDetailsGroup::-webkit-scrollbar-track {
+  background: #ACACAC; 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+.mainDetailsGroup::-webkit-scrollbar-thumb {
+  background: #5E5E5E; 
+  border-radius: 20px;
+}
+
+.mainDetailsGroup:hover::-webkit-scrollbar-track {
+  width: 2vh;
+}
+
+/* Handle on hover */
+.mainDetailsGroup:hover::-webkit-scrollbar-thumb {
+  background: #4b4b4b; 
+  width: 2vh;
+}
+
+
+.priorDigimons{
+  font-family: var(--font-general);
+  margin-top: 170px;
+  height: 100%;
+  text-align: center;
+
+}
+
+.priorDigimons h3{
+  font-family: var(--fonts-family);
+  font-weight: var(--font-bold);
+  color: var(--color-dark-blue);
+  font-size: 25px;
+}
+
+.priorDigimons button{
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.priorDigimons button:hover{
+  opacity: 1.0;
+}
+
+.priorDigimons ul{
+  list-style-type: none;
+  padding: 0;
+
+}
+
+.priorDigimons ul p{
+  text-align: center;
+  font-family: var(--fonts-family);
+  font-weight: var(--font-bold);
+  color: var(--color-dark-blue);
+  font-size: 20px;
+}
+
+
+.digimonGroup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.mainDetailsGroup h2{
   font-family: var(--fonts-family);
   font-weight: var(--font-bold);
   color: var(--color-dark-blue);
   font-size: 35px;
 }
+
+
 
 .mainDetailsGroup h4{
   font-family: var(--fonts-family);
@@ -118,20 +298,48 @@ align-items: center;
   font-family: var(--fonts-family);
   font-weight: var(--font-regular);
   color: var(--color-dark-blue);
-  font-size: 25px;
   text-align: center;
 }
 
 .digimonDetailsGroup{
   display: flex;
-  gap: 170px;
+  align-items: center;
+
+}
+
+.digimonDetailsGroup p{
+  font-size: 20px;
+}
+
+.arrowDetails{
+  margin-top: 4vh;
+}
+
+.about{
+  margin-left: 10vw;
+  margin-right: 10vw;
+
+}
+
+.about p{
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.skills{
+margin-top: 4vh;
+}
+
+.skills p{
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .footerDiv{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80px 0 50px 0;
+  margin: 60px 0 0px 0;
   gap: 200px;
 }
 .footerDiv p{

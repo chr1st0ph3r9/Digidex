@@ -1,6 +1,7 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import sortListItem from "/Materials/Logos/sortListIcon.png";
 import styles from "./page.module.css";
 import digimonlogo from "/Materials/Logos/digimon.png";
 import digidexLogo from "/Materials/Logos/DigidexLogoImage.png";
@@ -8,33 +9,23 @@ import githubIcon from "/Materials/Logos/github-mark.svg";
 import linkedinIcon from "/Materials/Logos/LI-In-Bug.png";
 import digidexLogoText from "/Materials/Logos/digidexLogoText.png";
 import heartIcon from "/Materials/Logos/heartIcon.png";
-import digimonImage from "/Materials/Logos/digimonImg.png";
-import digimonField from "/Materials/Logos/digimonField.png";
 import DigimonList from "./components/digimonList";
+import DigimonDetails from "./components/digimonDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default async function Home() {
+export default function Home() {
+  const [digimonId, setDigimonId] = useState<number>();
+
   return (
     //entire page
     <main className={styles.main}>
       {/* Left part of the page/ the list group */}
       <div className={styles.listGroup}>
-        {/* starting the list of digimons */}
-
-        <DigimonList />
-
         {/* extra elements of the list */}
-        <div className={styles.extraList}>
-          {/* Sorting button in the list */}
-          <Image
-            src={sortListItem}
-            alt="Sorting icon"
-            className={styles.sortingIcon}
-            width={100}
-            priority
-          />
-        </div>
+
+        {/* starting the list of digimons */}
+        <DigimonList selectDigimon={setDigimonId} />
       </div>
 
       {/* right/main part of the page */}
@@ -75,45 +66,13 @@ export default async function Home() {
 
         <div className={styles.subRightpage}>
           {/* details section */}
-          <div className={styles.mainDetailsGroup}>
-            <h3 className={styles.digimonName}>Garunimon</h3>
+          {digimonId && (
+            <DigimonDetails
+              digimonId={digimonId}
+              selectDigimon={setDigimonId}
+            />
+          )}
 
-            <div className={styles.digimonDetailsGroup}>
-              <div className={styles.digimonInfo}>
-                <div className={styles.digimonLevel}>
-                  <h4>Level</h4>
-                  <p>Ultimate</p>
-                </div>
-                <div className={styles.digimonAtribute}>
-                  <h4>Atribute</h4>
-                  <p>Vaccine</p>
-                </div>
-                <div className={styles.digimonType}>
-                  <h4>Type</h4>
-                  <p>Holy knight</p>
-                </div>
-              </div>
-
-              <Image
-                className={styles.digimonImage}
-                src={digimonImage}
-                alt="Digimon image"
-                width={420}
-                priority
-              />
-            </div>
-
-            <div className={styles.digimonField}>
-              <h4>Fields</h4>
-              <Image
-                className={styles.digimonField}
-                src={digimonField}
-                alt="Digimon Field"
-                width={100}
-                priority
-              />
-            </div>
-          </div>
           {/* footer */}
           <footer className={styles.footerDiv}>
             {/* footer text */}
@@ -131,21 +90,25 @@ export default async function Home() {
 
             {/* social links */}
             <div className={styles.socialGroup}>
-              <Image
-                src={githubIcon}
-                alt="Github link"
-                className={styles.githubIcon}
-                width={35}
-                priority
-              />
+              <a href="https://github.com/chr1st0ph3r9">
+                <Image
+                  src={githubIcon}
+                  alt="Github link"
+                  className={styles.githubIcon}
+                  width={35}
+                  priority
+                />
+              </a>
 
-              <Image
-                src={linkedinIcon}
-                alt="Linkedin link"
-                className={styles.linkedinIcon}
-                width={35}
-                priority
-              />
+              <a href="https://www.linkedin.com/in/christopher19/">
+                <Image
+                  src={linkedinIcon}
+                  alt="Linkedin link"
+                  className={styles.linkedinIcon}
+                  width={35}
+                  priority
+                />
+              </a>
             </div>
           </footer>
         </div>

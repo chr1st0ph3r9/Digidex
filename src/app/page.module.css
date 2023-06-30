@@ -191,6 +191,7 @@ align-items: center;
   border-radius: 5%;
   height: 70vh;
   overflow-y: scroll;
+  overflow-y: overlay;
   justify-content: space-between;
 
 

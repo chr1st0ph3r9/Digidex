@@ -103,7 +103,6 @@ export default function DigimonDetails({
                       width={100}
                       height={100}
                       alt="Digimon image"
-                      priority
                     />
                   </button>
                 </li>
@@ -168,13 +167,14 @@ export default function DigimonDetails({
           src={arrowDetails}
           alt="Arrow down"
           width={100}
-          priority
         />
         <div className={styles.about}>
           <h4>about</h4>
-          {digimonResponse?.descriptions[1].language == "en_us" &&
+          {digimonResponse?.descriptions[1] &&
+            digimonResponse.descriptions[1].language == "en_us" &&
             digimonResponse.descriptions[1].description}
-          {digimonResponse?.descriptions[0].language == "en_us" &&
+          {digimonResponse?.descriptions[0] &&
+            digimonResponse.descriptions[0].language == "en_us" &&
             digimonResponse.descriptions[0].description}
         </div>
         <div className={styles.skills}>
@@ -212,7 +212,6 @@ export default function DigimonDetails({
                       width={100}
                       height={100}
                       alt="Digimon image"
-                      priority
                     />
                   </button>
                 </li>

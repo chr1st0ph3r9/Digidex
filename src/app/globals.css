@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-:root{
-  --fonts-family:Lato;
-  --font-small:200;
-  --font-regular:400;
-  --font-bold:600;
-  --font-bolder:800;
-  --color-dark-blue:#003D68;
-  --color-background-light-blue:#f0f8ff;
-  --color-background-light-blue2:#DBE5FA;
+:root {
+  --fonts-family: Lato;
+  --font-small: 200;
+  --font-regular: 400;
+  --font-bold: 600;
+  --font-bolder: 800;
+  --color-border-light-gray: #BABFC5;
+  --color-dark-blue: #003D68;
+  --color-background-light-blue: #F0F8FF;
+  --color-background-light-blue2: #DBE5FA;
 }
 
 body {
-background-color: var(--color-background-light-blue);
-height: 1024px;
+  background-color: var(--color-background-light-blue);
+  height: 100%;
+  margin: 0;
 }
 
-p{
+p {
   font-family: var(--font-general);
 }
 

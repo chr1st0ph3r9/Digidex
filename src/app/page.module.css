@@ -10,7 +10,7 @@ import .main {
 
   display: flex;
   flex-direction: column;
-  width: 17vw;
+  width: 100%;
 }
 
 .extraList {
@@ -66,38 +66,51 @@ import .main {
   font-size: 32px;
   list-style-type: none;
   padding: 0%;
-  height: 70vh;
+  height: 79vh;
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-
-
+  flex-direction: row;
+  width: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3vw;
+  margin: 30px;
 }
 
 .lista button {
-  border: 0;
   background-color: aliceblue;
   cursor: pointer;
+  width: 190px;
+  height: 220px;
+  border: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: var(--color-border-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 
 }
 
 
 .digimonInList {
-  font-family: var(--fonts-family);
   font-weight: var(--font-bold);
   color: var(--color-dark-blue);
-  text-align: left;
+  text-align: center;
   font-size: 22px;
-  padding: 70px 1vw 70px 1vw;
+
 
 }
 
 .digimonInList:hover {
   font-size: 25px;
-  text-align: center;
+
+}
+
+.digimonImg {
+  mix-blend-mode: multiply;
 }
 
 
@@ -135,7 +148,7 @@ import .main {
 
 .bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   height: 10vh;
   align-items: center;
@@ -150,14 +163,19 @@ import .main {
 
 .digimonLogoGroup p {
   font-family: var(--font-general);
-  font-size: 20px;
-  font-weight: var(--font-bolder);
+  font-size: 15px;
+  font-weight: var(--font-regular);
   color: var(--color-dark-blue);
 }
 
 .digimonLogo {
+  width: 60px;
+  height: 30px;
   margin-left: 15px;
+  margin-right: 15px;
 }
+
+
 
 .navBarCentral {
   display: flex;
@@ -389,19 +407,26 @@ import .main {
   position: absolute;
   width: 100%;
   justify-content: space-around;
+  backdrop-filter: blur(10px);
 }
 
 .footerDiv p {
   font-family: var(--fonts-family);
-  font-weight: var(--font-);
 
 }
 
 .footerCredits {
   display: flex;
+  align-items: center;
+  font-family: var(--font-general);
+  font-size: 15px;
+  font-weight: var(--font-bold);
+  color: var(--color-dark-blue);
+  gap: 5vw;
 }
 
 .socialGroup {
   display: flex;
-  gap: 35px;
+  gap: 2vw;
+  align-items: center;
 }

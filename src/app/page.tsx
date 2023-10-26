@@ -106,13 +106,13 @@ export default function Home() {
         <DigimonList selectDigimon={setDigimonId} />
       </div>
 
-      {/* right/main part of the page */}
+      {/* right/main part of the page 
       <div className={styles.mainRight}>
         {/* detalles de digimon */}
-        {/* 
+      {/* 
         <div className={styles.subRightpage}>
           {/* details section */}
-        {/*
+      {/*
           {digimonId && (
             <DigimonDetails
               digimonId={digimonId}
@@ -121,12 +121,14 @@ export default function Home() {
           )}
       </div>
        */}
-      </div>
+      {/*
+    </div>
+    */}
       {/* footer */}
       <footer className={styles.footerDiv}>
         {/* footer text */}
         <div className={styles.digimonLogoGroup}>
-          <p>from</p>
+          <p>FROM THE</p>
           <Image
             src={digimonlogo}
             alt="Digimon logo"
@@ -134,6 +136,7 @@ export default function Home() {
             width={100}
             priority
           />
+          <p>WORLD</p>
         </div>
         <div className={styles.footerCredits}>
           <p>
@@ -142,7 +145,7 @@ export default function Home() {
               src={heartIcon}
               alt="Heart icon"
               className={styles.heartIcon}
-              width={30}
+              width={15}
               priority
             />{" "}
             by Christopher Hayling
@@ -155,7 +158,7 @@ export default function Home() {
                 src={githubIcon}
                 alt="Github link"
                 className={styles.githubIcon}
-                width={35}
+                width={25}
                 priority
               />
             </a>
@@ -165,7 +168,7 @@ export default function Home() {
                 src={linkedinIcon}
                 alt="Linkedin link"
                 className={styles.linkedinIcon}
-                width={35}
+                width={25}
                 priority
               />
             </a>

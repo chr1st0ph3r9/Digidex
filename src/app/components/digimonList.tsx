@@ -3,6 +3,7 @@ import styles from "../page.module.css";
 import useSWR from "swr";
 import { useState } from "react";
 import DigimonDetails from "./digimonDetails";
+import Image from "next/image";
 
 type Digimon = {
   id: number;
@@ -53,12 +54,18 @@ export default function DigimonList({
 
   return (
     <>
+      {/* 
+
+      
+
+
       <div
         className={styles.extraList}
         onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
       >
         {/* Sorting button in the list */}
 
+      {/*
         <button
           className={`${styles.sortingIcon} ${
             sortOrder === "desc" ? styles.sorting : ""
@@ -72,7 +79,8 @@ export default function DigimonList({
 
           <div className={styles.forthLine}></div>
         </button>
-      </div>
+    </div >
+        */}
       <ul className={styles.lista}>
         {sortedDigimons?.map((digimon) => (
           <li key={digimon.id}>
@@ -83,6 +91,15 @@ export default function DigimonList({
               }}
             >
               <h4 className={styles.digimonInList}>{digimon.name}</h4>
+
+              <Image
+                loader={() => digimon.image}
+                className={styles.digimonImg}
+                src={digimon.image}
+                width={100}
+                height={100}
+                alt="Digimon image"
+              />
             </button>
           </li>
         ))}

@@ -65,21 +65,33 @@ import .main {
 .lista {
   font-size: 32px;
   list-style-type: none;
-  padding: 0%;
-  height: 79vh;
+
+
   overflow-y: scroll;
   overflow-x: hidden;
+
   display: flex;
-  flex-direction: row;
+
+  height: 79vh;
   width: auto;
+
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3vw;
+
+  padding: 0%;
   margin: 30px;
+
+  background-color: var(--color-background-light-blue);
+}
+
+.lista li:nth-child(odd) .digimonInList {
+  transform: rotate(-90deg)
 }
 
 .lista button {
-  background-color: aliceblue;
+  background: none;
   cursor: pointer;
   width: 190px;
   height: 220px;
@@ -87,30 +99,39 @@ import .main {
   border-width: 1px;
   border-radius: 5px;
   border-color: var(--color-border-gray);
-  display: flex;
-  justify-content: center;
+
+  overflow: hidden;
+
+  display: grid;
   align-items: center;
+  justify-items: center;
+}
 
-
+.lista button>* {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  display: grid;
 }
 
 
 .digimonInList {
   font-weight: var(--font-bold);
-  color: var(--color-dark-blue);
+  color: var(--color-text-digimon-light-blue);
   text-align: center;
   font-size: 22px;
+  mix-blend-mode: darken;
+  margin: 0;
+  z-index: 2;
 
 
 }
 
-.digimonInList:hover {
-  font-size: 25px;
-
-}
+.digimonInList:hover {}
 
 .digimonImg {
   mix-blend-mode: multiply;
+  z-index: 1;
+
 }
 
 
@@ -401,13 +422,11 @@ import .main {
 
 .footerDiv {
   display: flex;
-  gap: 200px;
   bottom: 2px;
   align-items: center;
   position: absolute;
   width: 100%;
   justify-content: space-around;
-  backdrop-filter: blur(10px);
 }
 
 .footerDiv p {

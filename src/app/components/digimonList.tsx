@@ -4,6 +4,8 @@ import useSWR from "swr";
 import { useState } from "react";
 import DigimonDetails from "./digimonDetails";
 import Image from "next/image";
+import Textblock from "textblock";
+import { useRef } from "react";
 
 type Digimon = {
   id: number;
@@ -20,13 +22,38 @@ type DigimonResponse = {
   pageable: List;
 };
 
+const getDigimonFontSize = (nameLength: number): number => {
+  if (nameLength > 25) {
+    return 15;
+  } else if (nameLength > 20) {
+    return 17;
+  } else if (nameLength >= 15) {
+    return 18;
+  } else if (nameLength >= 11) {
+    return 25;
+  } else if (nameLength > 7) {
+    return 30;
+  } else if (nameLength >= 5) {
+    return 35;
+  } else if (nameLength == 3) {
+    return 80;
+  } else if (nameLength == 4) {
+    return 55;
+  } else {
+    return 30;
+  }
+};
+
 export default function DigimonList({
   selectDigimon,
+  selectSort,
+  searchDigimon,
 }: {
   selectDigimon: (digimonId: number) => void;
+  selectSort: string;
+  searchDigimon: string;
 }) {
   //sort icon
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const { data: listSize } = useSWR<DigimonResponse>(
     `https://www.digi-api.com/api/v1/digimon`,
@@ -42,12 +69,19 @@ export default function DigimonList({
     (url) => fetch(url).then((r) => r.json())
   );
 
+  //
+
   const sortedDigimons = digimons?.content.sort((a, b) => {
-    if (sortOrder === "asc") {
+    if (selectSort === "asc") {
       return a.name.localeCompare(b.name);
     } else {
       return b.name.localeCompare(a.name);
     }
+  });
+  const filteredDigimons = sortedDigimons?.filter(function (el) {
+    return el.name
+      .toLocaleLowerCase()
+      .includes(searchDigimon.toLocaleLowerCase());
   });
 
   if (!digimons) return <div>loading</div>;
@@ -81,29 +115,44 @@ export default function DigimonList({
         </button>
     </div >
         */}
-      <ul className={styles.lista}>
-        {sortedDigimons?.map((digimon) => (
-          <li key={digimon.id}>
-            <button
-              key={digimon.id}
-              onClick={() => {
-                selectDigimon(digimon.id);
-              }}
-            >
-              <h4 className={styles.digimonInList}>{digimon.name}</h4>
+      <div className={`${styles["listBackground"]}`}>
+        <ul className={styles.lista}>
+          {filteredDigimons?.map((digimon) => {
+            const digimonFontSize = getDigimonFontSize(digimon.name.length);
+            return (
+              <li key={digimon.id}>
+                <button
+                  key={digimon.id}
+                  onClick={() => {
+                    selectDigimon(digimon.id);
+                  }}
+                >
+                  <h4
+                    id="digimonName"
+                    className={`${styles["digimonInList"]} ${
+                      styles[digimon.id]
+                    }`}
+                    data-digimon-id={digimon.id}
+                    style={{ fontSize: `${digimonFontSize}px` }}
+                  >
+                    {digimon.name}
+                  </h4>
 
-              <Image
-                loader={() => digimon.image}
-                className={styles.digimonImg}
-                src={digimon.image}
-                width={100}
-                height={100}
-                alt="Digimon image"
-              />
-            </button>
-          </li>
-        ))}
-      </ul>
+                  <Image
+                    loader={() => digimon.image}
+                    unoptimized={true}
+                    className={styles.digimonImg}
+                    src={digimon.image}
+                    width={100}
+                    height={100}
+                    alt="Digimon image"
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </>
   );
 }

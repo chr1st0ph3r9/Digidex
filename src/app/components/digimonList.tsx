@@ -57,6 +57,7 @@ export default function DigimonList({
   AttributeValue: string;
 }) {
   const [filterLevel, setFilterLevel] = useState<string | "">("");
+  const [filterAttribute, setFilterAttribute] = useState<string | "">("");
   //sort icon
 
   const { data: listSize } = useSWR<DigimonResponse>(
@@ -65,20 +66,26 @@ export default function DigimonList({
   );
 
   //list of digimons
-
-  useEffect(() => {
-    return () => {
-      setFilterLevel(filterValue);
-      if (filterLevel) {
-      }
-    };
-  }, [filterValue]);
-  `&level=${filterValue}`;
-
   let listSizeNumber = listSize?.pageable?.totalElements;
 
+  let digimonsURLString = `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`;
+
+  useEffect(() => {
+    if (AttributeValue) {
+      setFilterAttribute(`&attribute=${AttributeValue}`);
+    } else {
+      setFilterAttribute("");
+    }
+    if (filterValue) {
+      setFilterLevel(`&level=${filterValue}`);
+    } else {
+      setFilterLevel("");
+    }
+    console.log(digimonsURLString);
+  }, [AttributeValue, digimonsURLString, filterValue]);
+
   const { data: digimons } = useSWR<DigimonResponse>(
-    `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}{}`,
+    `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`,
     (url) => fetch(url).then((r) => r.json())
   );
 

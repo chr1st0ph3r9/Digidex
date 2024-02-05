@@ -63,12 +63,12 @@ export default function Home() {
   }
   function onClickFilterAttributeButtom(selectFilter: string) {
     onClickFilter();
-    //setAttributeValue(selectFilter);
+    setAttributeValue(selectFilter);
   }
 
   function onClickFilterButtom(selectFilter: string) {
     onClickFilter();
-    //setFilterValue(selectFilter);
+    setFilterValue(selectFilter);
   }
 
   function FilterSection() {

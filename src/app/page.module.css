@@ -456,7 +456,7 @@ import .main {
   overflow-x: hidden;
   display: flex;
   height: 79vh;
-  width: auto;
+  width: 90vw;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;

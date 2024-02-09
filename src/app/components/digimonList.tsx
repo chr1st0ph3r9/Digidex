@@ -68,8 +68,6 @@ export default function DigimonList({
   //list of digimons
   let listSizeNumber = listSize?.pageable?.totalElements;
 
-  let digimonsURLString = `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`;
-
   useEffect(() => {
     if (AttributeValue) {
       setFilterAttribute(`&attribute=${AttributeValue}`);
@@ -81,8 +79,7 @@ export default function DigimonList({
     } else {
       setFilterLevel("");
     }
-    console.log(digimonsURLString);
-  }, [AttributeValue, digimonsURLString, filterValue]);
+  }, [AttributeValue, , filterValue]);
 
   const { data: digimons } = useSWR<DigimonResponse>(
     `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`,
@@ -94,21 +91,23 @@ export default function DigimonList({
   //ejemplo de link de atributo
   //https://www.digi-api.com/api/v1/digimon?attribute=Variable
   //
+  let sortedDigimons;
+  let filteredDigimons;
 
-  //
-
-  const sortedDigimons = digimons?.content.sort((a, b) => {
-    if (selectSort === "asc") {
-      return a.name.localeCompare(b.name);
-    } else {
-      return b.name.localeCompare(a.name);
-    }
-  });
-  const filteredDigimons = sortedDigimons?.filter(function (el) {
-    return el.name
-      .toLocaleLowerCase()
-      .includes(searchDigimon.toLocaleLowerCase());
-  });
+  if (digimons?.content) {
+    sortedDigimons = digimons?.content.sort((a, b) => {
+      if (selectSort === "asc") {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+    filteredDigimons = sortedDigimons?.filter(function (el) {
+      return el.name
+        .toLocaleLowerCase()
+        .includes(searchDigimon.toLocaleLowerCase());
+    });
+  }
 
   if (!digimons) return <div>loading</div>;
 

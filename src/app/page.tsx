@@ -63,12 +63,20 @@ export default function Home() {
   }
   function onClickFilterAttributeButtom(selectFilter: string) {
     onClickFilter();
-    setAttributeValue(selectFilter);
+    if (selectFilter == attributeValue) {
+      setAttributeValue("");
+    } else {
+      setAttributeValue(selectFilter);
+    }
   }
 
   function onClickFilterButtom(selectFilter: string) {
     onClickFilter();
-    setFilterValue(selectFilter);
+    if (selectFilter == filterValue) {
+      setFilterValue("");
+    } else {
+      setFilterValue(selectFilter);
+    }
   }
 
   function FilterSection() {
@@ -94,7 +102,12 @@ export default function Home() {
                 : ""
             }`}
           ></div>
-          <button onClick={() => {}} className={styles.filterButton}>
+          <button
+            onClick={() => {
+              onClickFilter();
+            }}
+            className={styles.filterButton}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -127,7 +140,12 @@ export default function Home() {
             <div className={styles.filterLevelGroup}>
               <h2 className={styles.filterLevelTitle}>LEVEL</h2>
               <div className={styles.filterLevelInfoGroup}>
-                <button onClick={() => onClickFilterButtom("ultimate")}>
+                <button
+                  onClick={() => onClickFilterButtom("ultimate")}
+                  className={`${
+                    filterValue === "ultimate" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <Image
                       src={filterLevelUltimateImg}

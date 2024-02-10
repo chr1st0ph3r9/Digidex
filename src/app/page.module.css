@@ -330,6 +330,11 @@ import .main {
   z-index: 5;
 }
 
+.filterButton:hover {
+  transform: rotate(180deg);
+  transition: all 1s ease;
+}
+
 .sortTitle {
   font-size: 9rem;
   transform: rotate(90deg);
@@ -388,9 +393,17 @@ import .main {
 }
 
 .filterInfo button:hover {
-  height: 70px;
-  width: 70px;
-  transition: all 1s ease;
+  width: 80px;
+  transition: all 0.3s ease;
+}
+
+.filterInfo button:hover div {
+  background-color: var(--color-main-blue);
+  transition: all 0.3s ease;
+}
+
+.filterInfo button:hover h3 {
+  color: var(--color-main-blue);
 }
 
 .filterInfo button p {
@@ -403,7 +416,35 @@ import .main {
 .filterActiveLevel div {
   width: 50px;
   height: 50px;
-  background-color: var(--color-text-digimon-light-blue);
+  background-color: #ffe7c9;
+  border-color: var(--color-main-orange);
+  transition: all 0.3s ease;
+}
+
+.filterOffAttribute path {
+
+  fill: var(--color-main-blue);
+  transition: all 0.3s ease;
+
+}
+
+.filterOffAttribute circle {
+  fill: var(--color-main-blue)
+}
+
+.filterActiveAttribute path {
+  fill: var(--color-main-orange);
+  transition: all 0.3s ease;
+
+}
+
+.filterActiveAttribute div {
+  background-color: var(--color-main-orange);
+}
+
+
+.filterActiveAttribute circle {
+  fill: var(--color-main-orange);
 }
 
 .filterIconContainer {

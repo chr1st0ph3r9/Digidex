@@ -15,7 +15,6 @@ import filterBackground2 from "../../Materials/filters/sortBackground2.svg";
 import heartIcon from "/Materials/Logos/heartIcon.png";
 import DigimonList from "./components/digimonList";
 import DigimonDetails from "./components/digimonDetails";
-import useSWR from "swr";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -157,7 +156,12 @@ export default function Home() {
                   </div>
                   <h3>ULTIMATE</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("armor")}>
+                <button
+                  onClick={() => onClickFilterButtom("armor")}
+                  className={`${
+                    filterValue === "armor" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +186,12 @@ export default function Home() {
                   </div>
                   <h3>ARMOR</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("baby II")}>
+                <button
+                  onClick={() => onClickFilterButtom("baby II")}
+                  className={`${
+                    filterValue === "baby II" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +210,12 @@ export default function Home() {
                   </div>
                   <h3>BABY II</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("digitama")}>
+                <button
+                  onClick={() => onClickFilterButtom("digitama")}
+                  className={`${
+                    filterValue === "digitama" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +234,12 @@ export default function Home() {
                   </div>
                   <h3>DIGITAMA</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("adult")}>
+                <button
+                  onClick={() => onClickFilterButtom("adult")}
+                  className={`${
+                    filterValue === "adult" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -237,7 +256,12 @@ export default function Home() {
                   </div>
                   <h3>ADULT</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("baby I")}>
+                <button
+                  onClick={() => onClickFilterButtom("baby I")}
+                  className={`${
+                    filterValue === "baby I" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -256,7 +280,12 @@ export default function Home() {
                   </div>
                   <h3>BABY I</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("hybrid")}>
+                <button
+                  onClick={() => onClickFilterButtom("hybrid")}
+                  className={`${
+                    filterValue === "hybrid" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -285,7 +314,12 @@ export default function Home() {
                   </div>
                   <h3>HYBRID</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("perfect")}>
+                <button
+                  onClick={() => onClickFilterButtom("perfect")}
+                  className={`${
+                    filterValue === "perfect" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <Image
                       src={filterLevelPerfectImg}
@@ -297,7 +331,12 @@ export default function Home() {
                   </div>
                   <h3>PERFECT</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("child")}>
+                <button
+                  onClick={() => onClickFilterButtom("child")}
+                  className={`${
+                    filterValue === "child" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -320,7 +359,12 @@ export default function Home() {
                   </div>
                   <h3>CHILD</h3>
                 </button>
-                <button onClick={() => onClickFilterButtom("unknown")}>
+                <button
+                  onClick={() => onClickFilterButtom("unknown")}
+                  className={`${
+                    filterValue === "unknown" ? styles.filterActiveLevel : ""
+                  }`}
+                >
                   <div className={styles.filterIconContainer}>
                     <p className={`${styles.filterLevelUnknown}`}>?</p>
                   </div>
@@ -334,6 +378,11 @@ export default function Home() {
               <div className={styles.filterAtributeInfoGroup}>
                 <button
                   onClick={() => onClickFilterAttributeButtom("Variable")}
+                  className={`${
+                    attributeValue === "Variable"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -346,13 +395,19 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M52.5 105C81.4949 105 105 81.4949 105 52.5C105 23.5051 81.4949 0 52.5 0C23.5051 0 0 23.5051 0 52.5C0 81.4949 23.5051 105 52.5 105ZM52.5 86.4706C71.2614 86.4706 86.4706 71.2614 86.4706 52.5C86.4706 33.7386 71.2614 18.5294 52.5 18.5294C33.7386 18.5294 18.5294 33.7386 18.5294 52.5C18.5294 71.2614 33.7386 86.4706 52.5 86.4706Z"
-                      fill="#008CC7"
                     />
-                    <circle cx="52.5" cy="52.5" r="18.5" fill="#008CC7" />
+                    <circle cx="52.5" cy="52.5" r="18.5" />
                   </svg>
                   <h3>VARIABLE</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("Free")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("Free")}
+                  className={`${
+                    attributeValue === "Free"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="100"
@@ -364,12 +419,18 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M27.6946 94.7612C34.4095 98.1139 41.9845 100 50 100C77.6142 100 100 77.6142 100 50C100 41.9845 98.1139 34.4095 94.7612 27.6946L27.6946 94.7612ZM83.8237 13.1763C74.9213 4.99488 63.044 0 50 0C22.3858 0 0 22.3858 0 50C0 63.044 4.99488 74.9213 13.1763 83.8237L83.8237 13.1763Z"
-                      fill="#008CC7"
                     />
                   </svg>
                   <h3>FREE</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("Vaccine")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("Vaccine")}
+                  className={`${
+                    attributeValue === "Vaccine"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="87"
@@ -381,12 +442,18 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M86.0351 64C86.0351 87.7483 66.7834 107 43.0352 107C19.2869 107 0.0351562 87.7483 0.0351562 64C0.0351562 40.2518 31.4986 10.5122 78.6937 0.0244141C82.8888 13.6586 86.0351 40.2518 86.0351 64ZM77.6449 68.1951C77.6449 84.9927 60.7409 98.6098 39.8888 98.6098C19.0367 98.6098 2.13272 84.9927 2.13272 68.1951C2.13272 51.3976 19.0367 37.7805 39.8888 37.7805C60.7409 37.7805 77.6449 51.3976 77.6449 68.1951ZM47.2303 86.0244C51.2849 86.0244 54.5717 81.7984 54.5717 76.5854C54.5717 71.3724 51.2849 67.1464 47.2303 67.1464C43.1757 67.1464 39.8888 71.3724 39.8888 76.5854C39.8888 81.7984 43.1757 86.0244 47.2303 86.0244ZM21.0108 65.0488C21.0108 69.6826 18.1934 73.439 14.7181 73.439C11.2427 73.439 8.4254 69.6826 8.4254 65.0488C8.4254 60.415 11.2427 56.6586 14.7181 56.6586C18.1934 56.6586 21.0108 60.415 21.0108 65.0488ZM27.3034 94.4147C30.7788 94.4147 33.5961 91.1278 33.5961 87.0732C33.5961 83.0186 30.7788 79.7317 27.3034 79.7317C23.8281 79.7317 21.0108 83.0186 21.0108 87.0732C21.0108 91.1278 23.8281 94.4147 27.3034 94.4147Z"
-                      fill="#008CC7"
                     />
                   </svg>
                   <h3>VACCINE</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("Virus")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("Virus")}
+                  className={`${
+                    attributeValue === "Virus"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="98"
@@ -398,12 +465,18 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M63.9241 19.5074L48.7816 0.951172L33.639 19.5074L9.68998 19.7767L14.7566 43.1852L0.0351562 62.0772L21.4956 72.711L27.0874 95.9996L48.7816 85.8512L70.4757 95.9996L76.0675 72.711L97.528 62.0772L82.8065 43.1852L87.8731 19.7767L63.9241 19.5074ZM60.1809 68.9938L54.613 52.9934L42.693 65.032L60.1809 68.9938ZM27.691 52.4832L32.8209 64.4801L19.8664 62.9243L27.691 52.4832ZM49.4262 70.3489L31.6273 67.666L30.1368 77.5543L47.9357 80.2372L49.4262 70.3489Z"
-                      fill="#008CC7"
                     />
                   </svg>
                   <h3>VIRUS</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("Data")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("Data")}
+                  className={`${
+                    attributeValue === "Data"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="90"
@@ -415,12 +488,18 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M44.5345 0.230469L89.0348 25.9227V77.3073L44.5345 103L0.0341797 77.3073V25.9227L44.5345 0.230469ZM45.542 51.157L83.8285 32.4717V74.2388L45.542 92.9241V51.157ZM40.5043 68.7432L29.4214 62.6979V72.7733L40.5043 78.8186V68.7432ZM3.22536 46.5773L14.3083 52.6225V62.6979L3.22536 56.6527V46.5773ZM23.3762 75.2922L15.3158 70.7582V78.3148L23.3762 82.8487V75.2922Z"
-                      fill="#008CC7"
                     />
                   </svg>
                   <h3>DATA</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("No Data")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("No Data")}
+                  className={`${
+                    attributeValue === "No Data"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="88"
@@ -432,12 +511,18 @@ export default function Home() {
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M19.275 85.725L44 100L68.0911 86.0911L43.5 61.5L19.275 85.725ZM30.0649 48.0649L2.23999 75.8899L0.69873 75V25L4.6936 22.6936L30.0649 48.0649ZM56.9351 48.0649L85.126 76.2559L87.3013 75V25L82.6725 22.3276L56.9351 48.0649ZM65.6375 12.4924L43.5 34.6299L21.7285 12.8585L44 0L65.6375 12.4924Z"
-                      fill="#008CC7"
                     />
                   </svg>
                   <h3>NO DATA</h3>
                 </button>
-                <button onClick={() => onClickFilterAttributeButtom("Unknown")}>
+                <button
+                  onClick={() => onClickFilterAttributeButtom("Unknown")}
+                  className={`${
+                    attributeValue === "Unknown"
+                      ? styles.filterActiveAttribute
+                      : styles.filterOffAttribute
+                  }`}
+                >
                   <div className={`${styles.filterPlatformUnknownIcon}`}>?</div>
                   <h3>UNKNOWN</h3>
                 </button>

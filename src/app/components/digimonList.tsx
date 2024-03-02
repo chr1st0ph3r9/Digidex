@@ -140,7 +140,7 @@ export default function DigimonList({
         </button>
     </div >
         */}
-      <div className={`${styles["listBackground"]}`}>
+      <div className={`${styles.listBackground}`}>
         <ul className={styles.lista}>
           {filteredDigimons?.map((digimon) => {
             const digimonFontSize = getDigimonFontSize(digimon.name.length);

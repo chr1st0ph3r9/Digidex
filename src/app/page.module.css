@@ -53,11 +53,20 @@ import .main {
   justify-content: center;
 }
 
+.filterBackgroundGroup {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
 .filterBackground1 {
 
   position: absolute;
   size: 50vw;
-  z-index: 1;
+  z-index: 20;
   left: -25px;
   bottom: -50%;
   animation-name: filterBackground1;
@@ -66,6 +75,8 @@ import .main {
   animation-fill-mode: forwards;
   animation-timing-function: ease;
   animation-delay: 0.5s;
+  pointer-events: none;
+  transition: all 0.5s ease;
 }
 
 @keyframes filterBackground1 {
@@ -82,7 +93,7 @@ import .main {
 .filterBackground2 {
   position: absolute;
   size: 50vw;
-  z-index: 1;
+  z-index: 20;
   left: 80px;
   bottom: -45%;
   animation-name: filterBackground2;
@@ -91,6 +102,10 @@ import .main {
   animation-fill-mode: forwards;
   animation-timing-function: ease;
   animation-delay: 0.5s;
+  pointer-events: none;
+  opacity: 1;
+
+  transition: all 0.8s ease;
 }
 
 @keyframes filterBackground2 {
@@ -103,6 +118,25 @@ import .main {
 
   }
 }
+
+.imageBackgroundOpening {
+
+  left: -150px;
+  bottom: -85%;
+  opacity: 0;
+
+
+}
+
+
+.imageBackgroundClosing {
+
+  left: -150px;
+  bottom: -85%;
+  transition: all 0.8s ease;
+  opacity: 0;
+}
+
 
 
 .sorting {
@@ -222,6 +256,11 @@ import .main {
   }
 }
 
+.filterinfoComponentGroup {
+  display: flex;
+  align-items: center;
+}
+
 .filterSection {
   background-color: var(--color-background-light-blue);
   position: absolute;
@@ -286,6 +325,7 @@ import .main {
   width: 100vw;
   height: 100vh;
 
+
 }
 
 @keyframes openFilterSectionAnimation {
@@ -314,6 +354,70 @@ import .main {
   }
 }
 
+.backgroundOn {
+  width: 100vw;
+  height: 100vh;
+
+}
+
+
+.checkedFilterOff {
+  position: absolute;
+  top: 50px;
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.checkedFilterOn {
+
+  position: absolute;
+  animation-name: checkedFilterAnimation;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+
+}
+
+@keyframes checkedFilterAnimation {
+  0% {
+
+    opacity: 0;
+    top: -100px;
+
+
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 1;
+    top: 50px;
+
+  }
+
+
+
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    top: 50px;
+
+  }
+
+
+
+
+
+}
+
 .filterButton {
   position: absolute;
   right: 6vw;
@@ -332,7 +436,7 @@ import .main {
 
 .filterButton:hover {
   transform: rotate(180deg);
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .sortTitle {
@@ -495,12 +599,17 @@ import .main {
 
 }
 
+.listBackground {
+  width: 100vw;
+
+
+}
+
 
 .lista {
 
 
   -ms-overflow-style: none;
-
   scrollbar-width: none;
   font-size: 32px;
   list-style-type: none;
@@ -508,19 +617,18 @@ import .main {
   overflow-x: hidden;
   display: flex;
   height: 79vh;
-  width: 90vw;
+  width: 80vw;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3vw;
-  padding: 30px 0% 0% 0%;
-  margin: 0 30px 30px 30px;
+  padding: 30px 10vw 70px 10vw;
+  margin: 0;
+  /* margin-bottom: 82px; */
   background: none;
   position: fixed;
   z-index: 10;
-
-
-  background-image: url("../../Materials/background-Group.png");
+  background-image: url(/_next/static/media/background-Group.099dda5b.png);
   background-position: center;
 }
 
@@ -529,6 +637,7 @@ import .main {
   grid-column: 1/2;
   transform: rotate(-90deg);
   width: 215px;
+  transition: all 0.3s ease;
 }
 
 #digimonIdTest {
@@ -541,6 +650,7 @@ import .main {
 .lista li:nth-child(even) .digimonInList {
   grid-row: 2/3;
   grid-column: 2/3;
+  transition: all 0.3s ease;
 
 }
 
@@ -561,6 +671,28 @@ import .main {
   justify-items: center;
   justify-content: center;
   align-content: center;
+  transition: all 0.3s ease;
+}
+
+.lista button:hover {
+  width: 230px;
+  height: 240px;
+  transition: all 0.3s ease;
+
+}
+
+.lista button:hover .digimonInList {
+  grid-row: 3/3;
+  grid-column: 2/3;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.lista button:hover .digimonImg {
+  width: 150px;
+  height: 150px;
+  grid-row: 1 / 3;
+  transition: all 0.5s ease;
 }
 
 
@@ -581,6 +713,7 @@ import .main {
   grid-row: 2/3;
   grid-column: 2/3;
   z-index: 1;
+  transition: all 0.3s ease;
 
 }
 
@@ -620,6 +753,9 @@ import .main {
   width: 100%;
   height: 10vh;
   align-items: center;
+  position: relative;
+  z-index: 15;
+  box-shadow: rgba(159, 183, 211, 0.1) 0px 10px 45px 0px;
 }
 
 .digimonLogoGroup {
@@ -903,11 +1039,15 @@ import .main {
 
 .footerDiv {
   display: flex;
-  bottom: 2px;
+  bottom: 0;
   align-items: center;
-  position: absolute;
   width: 100%;
+  height: 50px;
+  background-color: var(--color-background-light-blue);
   justify-content: space-around;
+  position: fixed;
+  z-index: 10;
+  box-shadow: rgba(159 183 211 / 10%) 0px -5px 45px 0px;
 }
 
 .footerDiv p {

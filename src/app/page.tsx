@@ -8,6 +8,9 @@ import digidexLogo from "/Materials/Logos/DigidexLogoImage.png";
 import githubIcon from "/Materials/Logos/github-mark.svg";
 import linkedinIcon from "/Materials/Logos/LI-In-Bug.png";
 import digidexLogoText from "/Materials/Logos/digidexLogoText.png";
+
+// import backgroundDigimonIcon1 from "../../";
+
 import filterLevelPerfectImg from "../../Materials/filters/Level-Perfect.svg";
 import filterLevelUltimateImg from "../../Materials/filters/Level-Ultimate.svg";
 import filterBackground1 from "../../Materials/filters/sortBackground.svg";
@@ -49,23 +52,24 @@ export default function Home() {
     setSearch(inputValue);
     setTimeout(() => {
       window.blur();
-    }, 2000);
+    }, 1000);
   };
 
   function onClickFilter() {
     if (filterPage == true) {
       setBackgroundStyle("closing");
-      setTimeout(() => {
-        setFilterPage(false);
-        setBackgroundStyle("notClosing");
-      }, 1500);
+
+      setFilterPage(false);
+      setBackgroundStyle("notClosing");
+      ;
     } else {
       setFilterPage(true);
-      setTimeout(() => {
-        setBackgroundStyle("opened");
-      }, 1500);
+
+      setBackgroundStyle("opened");
+
     }
   }
+
 
   const getBackgroundFilterImage = React.useCallback(() => {
     return (
@@ -73,26 +77,19 @@ export default function Home() {
         <Image
           src={filterBackground1}
           alt="filter background image"
-          className={`${styles.filterBackground1} ${
-            backgroundStyle === "notClosing"
-              ? styles.imageBackgroundOpening
-              : ""
-          } ${
-            backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
-          }`}
+          className={`${styles.filterBackground1}  ${backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
+            }`}
           width={2000}
           priority
         />
         <Image
           src={filterBackground2}
           alt="filter background image"
-          className={`${styles.filterBackground2} ${
-            backgroundStyle === "notClosing"
-              ? styles.imageBackgroundOpening
-              : ""
-          } ${
-            backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
-          }`}
+          className={`${styles.filterBackground2} ${backgroundStyle === "notClosing"
+            ? styles.imageBackgroundOpening
+            : ""
+            } ${backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
+            }`}
           width={2000}
           priority
         />
@@ -126,9 +123,8 @@ export default function Home() {
             <div className={styles.filterLevelInfoGroup}>
               <button
                 onClick={() => onClickFilterButtom("ultimate")}
-                className={`${
-                  filterValue === "ultimate" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "ultimate" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <Image
@@ -143,9 +139,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("armor")}
-                className={`${
-                  filterValue === "armor" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "armor" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -173,9 +168,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("baby II")}
-                className={`${
-                  filterValue === "baby II" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "baby II" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -197,9 +191,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("digitama")}
-                className={`${
-                  filterValue === "digitama" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "digitama" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -221,9 +214,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("adult")}
-                className={`${
-                  filterValue === "adult" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "adult" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -243,9 +235,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("baby I")}
-                className={`${
-                  filterValue === "baby I" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "baby I" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -267,9 +258,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("hybrid")}
-                className={`${
-                  filterValue === "hybrid" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "hybrid" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -301,9 +291,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("perfect")}
-                className={`${
-                  filterValue === "perfect" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "perfect" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <Image
@@ -318,9 +307,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("child")}
-                className={`${
-                  filterValue === "child" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "child" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <svg
@@ -346,9 +334,8 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("unknown")}
-                className={`${
-                  filterValue === "unknown" ? styles.filterActiveLevel : ""
-                }`}
+                className={`${filterValue === "unknown" ? styles.filterActiveLevel : ""
+                  }`}
               >
                 <div className={styles.filterIconContainer}>
                   <p className={`${styles.filterLevelUnknown}`}>?</p>
@@ -363,11 +350,10 @@ export default function Home() {
             <div className={styles.filterAtributeInfoGroup}>
               <button
                 onClick={() => onClickFilterAttributeButtom("Variable")}
-                className={`${
-                  attributeValue === "Variable"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Variable"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -387,11 +373,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Free")}
-                className={`${
-                  attributeValue === "Free"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Free"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -410,11 +395,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Vaccine")}
-                className={`${
-                  attributeValue === "Vaccine"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Vaccine"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -433,11 +417,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Virus")}
-                className={`${
-                  attributeValue === "Virus"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Virus"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -456,11 +439,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Data")}
-                className={`${
-                  attributeValue === "Data"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Data"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -479,11 +461,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("No Data")}
-                className={`${
-                  attributeValue === "No Data"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "No Data"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -502,11 +483,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Unknown")}
-                className={`${
-                  attributeValue === "Unknown"
-                    ? styles.filterActiveAttribute
-                    : styles.filterOffAttribute
-                }`}
+                className={`${attributeValue === "Unknown"
+                  ? styles.filterActiveAttribute
+                  : styles.filterOffAttribute
+                  }`}
               >
                 <div className={`${styles.filterPlatformUnknownIcon}`}>?</div>
                 <h3>UNKNOWN</h3>
@@ -518,41 +498,40 @@ export default function Home() {
     );
   }
 
+  //to be implemented
+  function FilterSectionBackgroundCircle() {
+    return <div className={`${styles.filterSectionBackgroundCircle}`} />;
+  }
+
   function FilterSection() {
     return (
       <div
-        className={`${styles.filterSectionBackground} ${
-          backgroundStyle === "closing" ? styles.backgroundEnding : ""
-        }
-        ${backgroundStyle === "notClosing" ? styles.backgroundStarting : ""}
-        ${backgroundStyle === "opened" ? styles.backgroundOpened : ""}`}
+        className={`${styles.filterSectionBackground} ${backgroundStyle === "closing" ? styles.backgroundEnding : ""
+          }
+`}
       >
         <div
           className={`${styles.filterSection} 
           
 
           ${backgroundStyle === "closing" ? styles.backgroundClosing : ""}
-        ${backgroundStyle === "notClosing" ? styles.backgroundOpening : ""}
-        ${backgroundStyle === "opened" ? styles.backgroundOn : ""}
           
           `}
         >
           <div
-            className={`${styles.filterSectionFront} ${
-              backgroundStyle === "closing"
-                ? styles.filterSectionFrontBlank
-                : ""
-            }`}
+            className={`${styles.filterSectionFront} ${backgroundStyle === "closing"
+              ? styles.filterSectionFrontBlank
+              : ""
+              }`}
           ></div>
 
           <Image
             src={checkedFilter}
             alt="checked"
-            className={`${
-              attributeValue || filterValue
-                ? styles.checkedFilterOn
-                : styles.checkedFilterOff
-            }`}
+            className={`${attributeValue || filterValue
+              ? styles.checkedFilterOn
+              : styles.checkedFilterOff
+              }`}
             width={100}
             priority
           />
@@ -643,9 +622,8 @@ export default function Home() {
             onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
           >
             <div
-              className={`${styles.sortingIcon} ${
-                sortOrder === "desc" ? styles.sorting : ""
-              }`}
+              className={`${styles.sortingIcon} ${sortOrder === "desc" ? styles.sorting : ""
+                }`}
             >
               <div className={styles.firstLine}></div>
 
@@ -656,6 +634,9 @@ export default function Home() {
               <div className={styles.forthLine}></div>
             </div>
           </button>
+
+
+          {filterPage && FilterSectionBackgroundCircle()}
           {filterPage && getBackgroundFilterImage()}
           {filterPage && <FilterSection></FilterSection>}
           <button
@@ -684,7 +665,16 @@ export default function Home() {
       <div className={styles.listGroup}>
         {/* starting the list of digimons */}
 
-        <div className={`${styles.backgroundDigimonIcons}`}></div>
+        <div className={`${styles.backgroundDigimonIcons}`}>
+          {/* <Image
+            src={backgroundDigimonIcon1}
+            alt="Digimon logo"
+            className={styles.digimonLogo}
+            width={100}
+            priority
+          /> */}
+        </div>
+
         <DigimonList
           selectDigimon={setDigimonId}
           selectSort={sortOrder}
@@ -765,4 +755,6 @@ export default function Home() {
       </footer>
     </main>
   );
+
+
 }

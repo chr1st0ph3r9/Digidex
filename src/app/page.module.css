@@ -60,7 +60,29 @@ import .main {
   left: 0;
   position: absolute;
   top: 0;
+
+
+  animation-name: filterBackgroundGroupAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
+
+@keyframes filterBackgroundGroupAnimation {
+  0% {
+    opacity: 0;
+    left: -30%;
+  }
+
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+
+}
+
+
+
 
 .filterBackground1 {
 
@@ -133,7 +155,7 @@ import .main {
 
   left: -150px;
   bottom: -85%;
-  transition: all 0.8s ease;
+  transition: all 0.3s ease;
   opacity: 0;
 }
 
@@ -204,7 +226,7 @@ import .main {
 
 .backgroundEnding {
   animation-name: filterSectionBackgroundEndAnimation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-timing-function: ease;
 
 }
@@ -223,7 +245,7 @@ import .main {
 
 .backgroundClosing {
   animation-name: filterSectionBackgroundClosingAnimation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-timing-function: ease;
 
 }
@@ -261,7 +283,47 @@ import .main {
   align-items: center;
 }
 
+.filterSectionBackgroundCircle {
+
+  position: absolute;
+  z-index: 16;
+  width: 2000px;
+  height: 2000px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  top: 0;
+  border-radius: 50%;
+  right: 0;
+  background-color: red;
+
+
+
+  animation-name: filterSectionBackgroundCircleAnimation;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes filterSectionBackgroundCircleAnimation {
+
+  0% {
+    width: 20px;
+    height: 20px;
+
+  }
+
+  100% {
+    width: 2000px;
+    height: 2000px;
+    transform: translate(430px, -273px);
+  }
+
+}
+
 .filterSection {
+  width: 100vw;
+  height: 100vh;
   background-color: var(--color-background-light-blue);
   position: absolute;
   z-index: 15;
@@ -276,8 +338,27 @@ import .main {
   overflow-y: hidden;
 
 
+  animation-name: filterSectionAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 
 
+
+}
+
+@keyframes filterSectionAnimation {
+
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 
 }
 
@@ -290,7 +371,7 @@ import .main {
 .filterSectionFrontBlank {
   position: absolute;
   animation-name: filterSectionFrontBlankAnimation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
   width: 100vw;
@@ -317,13 +398,11 @@ import .main {
   }
 }
 
-.backgroundOpening {
+/* .backgroundOpening {
   animation-name: openFilterSectionAnimation;
   animation-duration: 2s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  width: 100vw;
-  height: 100vh;
 
 
 }
@@ -352,7 +431,7 @@ import .main {
     right: 0;
     top: 0;
   }
-}
+} */
 
 .backgroundOn {
   width: 100vw;
@@ -808,13 +887,15 @@ import .main {
   background-repeat: no-repeat;
 }
 
-.searchbutton:focus,
-.sortingbutton:focus,
-.filterButtonDefault:focus {
-  animation-name: activeButton;
-  animation-duration: 1s;
+.searchbutton:hover,
+.sortingbutton:hover,
+.filterButtonDefault:hover {
+
+  transition: all 0.3s ease;
+  background-color: var(--color-dark-blue);
 }
 
+/* 
 @keyframes activeButton {
   0% {
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100" fill="none"><circle cx="2.5" cy="2.5" r="2.5" fill="%23003D68"/></svg>');
@@ -831,7 +912,7 @@ import .main {
 
   }
 
-}
+} */
 
 
 

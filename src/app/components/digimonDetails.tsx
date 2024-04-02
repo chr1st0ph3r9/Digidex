@@ -1,6 +1,6 @@
 import digimonImage from "/Materials/Logos/digimonImg.png";
 import digimonField from "/Materials/Logos/digimonField.png";
-import arrowDetails from "/Materials/Logos/arrow-down.png";
+import scrollIcon from "/Materials/mouseIcon.svg";
 import styles from "src/app/page.module.css";
 import Image from "next/image";
 import useSWR from "swr";
@@ -79,12 +79,12 @@ export default function DigimonDetails({
     condition: string;
   };
 
-  console.log(digimonResponse?.priorEvolutions[0].id);
 
   return (
     <div className={styles.mainDetailsGroup}>
       <div className={styles.priorDigimons}>
-        <h3>Previous digimons</h3>
+        <h3>PRIOR-FORM</h3>
+        {/*
         <ul>
           {digimonResponse?.priorEvolutions &&
             digimonResponse.priorEvolutions.map((priorevolution) => {
@@ -108,37 +108,44 @@ export default function DigimonDetails({
                 </li>
               );
             })}
-        </ul>
+        </ul> */}
       </div>
-
       <div className={styles.digimonGroup}>
         <h2 className={styles.digimonName}>{digimonResponse?.name}</h2>
 
         <div className={styles.digimonDetailsGroup}>
           <div className={styles.digimonInfo}>
             <div className={styles.digimonLevel}>
-              <h4>Level</h4>
+              <div className={styles.digimonTypeTitle}>
+                <h4>Level</h4>
+              </div>
               {digimonResponse?.levels &&
                 digimonResponse.levels.map((level) => {
                   return <p key={level.id}>{level.level}</p>;
                 })}
             </div>
             <div className={styles.digimonAtribute}>
-              <h4>Atribute</h4>
+              <div className={styles.digimonTypeTitle}>
+                <h4>Atribute</h4>
+              </div>
               {digimonResponse?.attributes &&
                 digimonResponse.attributes.map((attributes) => {
                   return <p key={attributes.id}>{attributes.attribute}</p>;
                 })}
             </div>
             <div className={styles.digimonType}>
-              <h4>Type</h4>
+              <div className={styles.digimonTypeTitle}>
+                <h4>Type</h4>
+              </div>
               {digimonResponse?.types &&
                 digimonResponse.types.map((types) => {
                   return <p key={types.id}>{types.type}</p>;
                 })}
             </div>
             <div className={styles.digimonField}>
-              <h4>Fields</h4>
+              <div className={styles.digimonTypeTitle}>
+                <h4>Fields</h4>
+              </div>
               {digimonResponse?.fields &&
                 digimonResponse.fields.map((field) => {
                   return <p key={field.id}>{field.field}</p>;
@@ -161,15 +168,20 @@ export default function DigimonDetails({
               );
             })}
         </div>
+        <div className={styles.scrollIconGroup}>
+          <p>scroll <Image
+            className={styles.scrollIcon}
+            src={scrollIcon}
+            alt="Arrow down"
+            width={100}
+          /> for more!</p>
 
-        <Image
-          className={styles.arrowDetails}
-          src={arrowDetails}
-          alt="Arrow down"
-          width={100}
-        />
+
+        </div>
         <div className={styles.about}>
-          <h4>about</h4>
+          <div className={styles.aboutTitle}><h3>about</h3><div className={styles.aboutTitleIcon}>"</div></div>
+
+
           {digimonResponse?.descriptions[1] &&
             digimonResponse.descriptions[1].language == "en_us" &&
             digimonResponse.descriptions[1].description}
@@ -178,7 +190,7 @@ export default function DigimonDetails({
             digimonResponse.descriptions[0].description}
         </div>
         <div className={styles.skills}>
-          <h4>skills</h4>
+          <h3>skills</h3>
           <ul>
             {digimonResponse?.skills &&
               digimonResponse.skills.map((skill) => {
@@ -192,9 +204,10 @@ export default function DigimonDetails({
           </ul>
         </div>
       </div>
-      <div className={styles.priorDigimons}>
-        <h3>Next digimons</h3>
-        <ul>
+      <div className={styles.nextDigimons}>
+
+        <h3>DIGIEVOLVE</h3>
+        {/* <ul>
           {digimonResponse?.nextEvolutions &&
             digimonResponse.nextEvolutions.map((nextevolution) => {
               return (
@@ -217,7 +230,7 @@ export default function DigimonDetails({
                 </li>
               );
             })}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

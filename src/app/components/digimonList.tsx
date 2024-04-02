@@ -20,6 +20,11 @@ type DigimonResponse = {
   content: Digimon[];
   pageable: List;
 };
+enum actualPageOptions {
+  list = "list",
+  details = "details",
+
+}
 
 const getDigimonFontSize = (nameLength: number): number => {
   if (nameLength > 25) {
@@ -49,12 +54,15 @@ export default function DigimonList({
   searchDigimon,
   filterValue,
   AttributeValue,
+  selectPage
+
 }: {
   selectDigimon: (digimonId: number) => void;
   selectSort: string;
   searchDigimon: string;
   filterValue: string;
   AttributeValue: string;
+  selectPage: (page: actualPageOptions) => void;
 }) {
   const [filterLevel, setFilterLevel] = useState<string | "">("");
   const [filterAttribute, setFilterAttribute] = useState<string | "">("");
@@ -113,33 +121,6 @@ export default function DigimonList({
 
   return (
     <>
-      {/* 
-
-      
-
-
-      <div
-        className={styles.extraList}
-        onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-      >
-        {/* Sorting button in the list */}
-
-      {/*
-        <button
-          className={`${styles.sortingIcon} ${
-            sortOrder === "desc" ? styles.sorting : ""
-          }`}
-        >
-          <div className={styles.firstLine}></div>
-
-          <div className={styles.secondLine}></div>
-
-          <div className={styles.thirdLine}></div>
-
-          <div className={styles.forthLine}></div>
-        </button>
-    </div >
-        */}
       <div className={`${styles.listBackground}`}>
         <ul className={styles.lista}>
           {filteredDigimons?.map((digimon) => {
@@ -150,13 +131,13 @@ export default function DigimonList({
                   key={digimon.id}
                   onClick={() => {
                     selectDigimon(digimon.id);
+                    selectPage(actualPageOptions.details);
                   }}
                 >
                   <h4
                     id="digimonName"
-                    className={`${styles["digimonInList"]} ${
-                      styles[digimon.id]
-                    }`}
+                    className={`${styles["digimonInList"]} ${styles[digimon.id]
+                      }`}
                     data-digimon-id={digimon.id}
                     style={{ fontSize: `${digimonFontSize}px` }}
                   >

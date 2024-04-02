@@ -24,7 +24,21 @@ import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
+
+enum actualPageOptions {
+  list = "list",
+  details = "details",
+
+}
+
 export default function Home() {
+
+
+
+  const [actualPage, setActualPage] = useState<actualPageOptions>(actualPageOptions.list);
+
+
   const [digimonId, setDigimonId] = useState<number>();
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [search, setSearch] = useState<string | "">("");
@@ -35,6 +49,11 @@ export default function Home() {
   >("notClosing");
   const [filterValue, setFilterValue] = useState<string | "">("");
   const [attributeValue, setAttributeValue] = useState<string | "">("");
+
+  const [tempFilterValue, setTempFilterValue] = useState<string | "">("");
+  const [tempAttributeValue, setTempAttributeValue] = useState<string | "">("");
+
+
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -57,9 +76,15 @@ export default function Home() {
 
   function onClickFilter() {
     if (filterPage == true) {
+      setAttributeValue(tempAttributeValue);
+      setFilterValue(tempFilterValue);
+
       setBackgroundStyle("closing");
 
-      setFilterPage(false);
+      setTimeout(() => {
+        setFilterPage(false);
+      }, 400);
+
       setBackgroundStyle("notClosing");
       ;
     } else {
@@ -73,11 +98,19 @@ export default function Home() {
 
   const getBackgroundFilterImage = React.useCallback(() => {
     return (
-      <div className={`${styles.filterBackgroundGroup}`}>
+      <div className={`${styles.filterBackgroundGroup} ${backgroundStyle === "closing"
+        ? styles.filterBackgroundGroupEnding
+        : ""
+        }`}>
         <Image
           src={filterBackground1}
           alt="filter background image"
-          className={`${styles.filterBackground1}  ${backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
+          className={`${styles.filterBackground1}  ${backgroundStyle === "closing"
+            ? styles.filterBackgroundGroupEnding
+            : ""
+            } ${backgroundStyle === "notClosing"
+              ? styles.imageBackgroundOpening
+              : ""
             }`}
           width={2000}
           priority
@@ -88,8 +121,7 @@ export default function Home() {
           className={`${styles.filterBackground2} ${backgroundStyle === "notClosing"
             ? styles.imageBackgroundOpening
             : ""
-            } ${backgroundStyle === "closing" ? styles.imageBackgroundClosing : ""
-            }`}
+            } `}
           width={2000}
           priority
         />
@@ -98,22 +130,35 @@ export default function Home() {
   }, [backgroundStyle]);
 
   function onClickFilterAttributeButtom(selectFilter: string) {
-    if (selectFilter == attributeValue) {
-      setAttributeValue("");
-    } else {
-      setAttributeValue(selectFilter);
+
+
+
+    if (selectFilter == tempAttributeValue) {
+      setTempAttributeValue("");
+
+
     }
+    else {
+      setTempAttributeValue(selectFilter);
+    }
+
   }
 
   function onClickFilterButtom(selectFilter: string) {
-    if (selectFilter == filterValue) {
-      setFilterValue("");
-    } else {
-      setFilterValue(selectFilter);
+
+    if (selectFilter == tempFilterValue) {
+      setTempFilterValue("");
+
     }
+    else {
+      setTempFilterValue(selectFilter);
+    }
+
   }
 
-  function FilterInfo() {
+  const FilterInfo = React.useCallback(() => {
+
+
     return (
       <div className={styles.filterinfoComponentGroup}>
         <h2 className={styles.sortTitle}>SORT BY</h2>
@@ -123,7 +168,7 @@ export default function Home() {
             <div className={styles.filterLevelInfoGroup}>
               <button
                 onClick={() => onClickFilterButtom("ultimate")}
-                className={`${filterValue === "ultimate" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "ultimate" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -139,7 +184,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("armor")}
-                className={`${filterValue === "armor" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "armor" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -168,7 +213,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("baby II")}
-                className={`${filterValue === "baby II" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "baby II" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -191,7 +236,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("digitama")}
-                className={`${filterValue === "digitama" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "digitama" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -214,7 +259,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("adult")}
-                className={`${filterValue === "adult" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "adult" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -235,7 +280,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("baby I")}
-                className={`${filterValue === "baby I" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "baby I" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -258,7 +303,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("hybrid")}
-                className={`${filterValue === "hybrid" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "hybrid" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -291,7 +336,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("perfect")}
-                className={`${filterValue === "perfect" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "perfect" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -307,7 +352,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("child")}
-                className={`${filterValue === "child" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "child" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -334,7 +379,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterButtom("unknown")}
-                className={`${filterValue === "unknown" ? styles.filterActiveLevel : ""
+                className={`${tempFilterValue === "unknown" ? styles.filterActiveLevel : ""
                   }`}
               >
                 <div className={styles.filterIconContainer}>
@@ -496,25 +541,24 @@ export default function Home() {
         </div>
       </div>
     );
-  }
+
+  }, [filterPage]);
+
 
   //to be implemented
   function FilterSectionBackgroundCircle() {
-    return <div className={`${styles.filterSectionBackgroundCircle}`} />;
+    return <div className={`${styles.filterSectionBackgroundCircle}${backgroundStyle === "closing" ? styles.filterSectionBackgroundCircleEnding : ""}`} />;
   }
 
   function FilterSection() {
     return (
       <div
-        className={`${styles.filterSectionBackground} ${backgroundStyle === "closing" ? styles.backgroundEnding : ""
-          }
-`}
+        className={`${styles.filterSectionBackground} ${backgroundStyle === "closing" ? styles.filterSectionBackgroundEnding : ""
+          }`}
       >
         <div
           className={`${styles.filterSection} 
           
-
-          ${backgroundStyle === "closing" ? styles.backgroundClosing : ""}
           
           `}
         >
@@ -562,10 +606,61 @@ export default function Home() {
     );
   }
 
+
+
+
+
+
+
+  // cambiar icono al clickear
+
+
+
+
   return (
     //entire page
     <main className={styles.main}>
       {/* Nav bar */}
+
+      {digimonId && <button className={styles.closeDetailsButton} onClick={() => actualPage == actualPageOptions.details ? setActualPage(actualPageOptions.list) : setActualPage(actualPageOptions.details)}>
+
+        {actualPage == actualPageOptions.list &&
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 32 32"
+            fill="none"
+            className={styles.closeDetailsSvg}
+
+          >
+            <path
+              d="M7.7822 0L0.00402492 7.77817L8.01597 15.7901L0 23.8061L7.77817 31.5843L15.7941 23.5683L23.8068 31.5809L31.585 23.8028L23.5723 15.7901L31.581 7.78149L23.8028 0.0033167L15.7941 8.01195L7.7822 0Z"
+              fill="#E7EDF4"
+            />
+          </svg>}
+        {actualPage == actualPageOptions.details &&
+          <svg
+            className={styles.closeDetailsSvg}
+            xmlns="http://www.w3.org/2000/svg"
+            width="29"
+            height="25"
+            viewBox="0 0 29 25"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M15.6864 9.28001C15.6864 12.2697 13.099 14.6933 9.9072 14.6933C6.71544 14.6933 4.128 12.2697 4.128 9.28001C4.128 6.2903 6.71544 3.86667 9.9072 3.86667C13.099 3.86667 15.6864 6.2903 15.6864 9.28001ZM15.4503 16.9727C13.8684 17.9748 11.9607 18.56 9.9072 18.56C4.4356 18.56 0 14.4052 0 9.28001C0 4.1548 4.4356 0 9.9072 0C15.3788 0 19.8144 4.1548 19.8144 9.28001C19.8144 10.6483 19.4982 11.9475 18.9306 13.1169L27.9677 20.2198C29.1902 21.1807 29.3497 22.888 28.3239 24.0331C27.2981 25.1782 25.4755 25.3276 24.2529 24.3667L15.2004 17.2516L15.4503 16.9727Z"
+              fill="#E7EDF4"
+            />
+          </svg>
+
+
+        }
+
+
+      </button>}
       <div className={styles.bar}>
         {/* left part of the navbar */}
         {/* Right part of the navbar */}
@@ -588,171 +683,177 @@ export default function Home() {
         </div>
 
         {/* Search-bar */}
-        <div className={`${styles.navBarCentral}`}>
-          <div className={styles.searchBarGroup}>
-            <input
-              onChange={onChangeText}
-              onKeyUp={handleKeyPress}
-              id="searchInput"
-              className={styles.searchBar}
-              type="search"
-              placeholder="Agumon..."
-              value={inputValue}
-            ></input>
-            <button className={styles.searchbutton} onClick={onClickSearch}>
+        {actualPage == actualPageOptions.list && (
+          <div className={`${styles.navBarCentral}`}>
+            <div className={styles.searchBarGroup}>
+              <input
+                onChange={onChangeText}
+                onKeyUp={handleKeyPress}
+                id="searchInput"
+                className={styles.searchBar}
+                type="search"
+                placeholder="Agumon..."
+                value={inputValue}
+              ></input>
+              <button className={styles.searchbutton} onClick={onClickSearch}>
+                <svg
+                  className={styles.searchIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="29"
+                  height="25"
+                  viewBox="0 0 29 25"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M15.6864 9.28001C15.6864 12.2697 13.099 14.6933 9.9072 14.6933C6.71544 14.6933 4.128 12.2697 4.128 9.28001C4.128 6.2903 6.71544 3.86667 9.9072 3.86667C13.099 3.86667 15.6864 6.2903 15.6864 9.28001ZM15.4503 16.9727C13.8684 17.9748 11.9607 18.56 9.9072 18.56C4.4356 18.56 0 14.4052 0 9.28001C0 4.1548 4.4356 0 9.9072 0C15.3788 0 19.8144 4.1548 19.8144 9.28001C19.8144 10.6483 19.4982 11.9475 18.9306 13.1169L27.9677 20.2198C29.1902 21.1807 29.3497 22.888 28.3239 24.0331C27.2981 25.1782 25.4755 25.3276 24.2529 24.3667L15.2004 17.2516L15.4503 16.9727Z"
+                    fill="#1B547B"
+                  />
+                </svg>
+              </button>
+            </div>
+            <button
+              className={`${styles.sortingbutton}`}
+              onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+            >
+              <div
+                className={`${styles.sortingIcon} ${sortOrder === "desc" ? styles.sorting : ""
+                  }`}
+              >
+                <div className={styles.firstLine}></div>
+
+                <div className={styles.secondLine}></div>
+
+                <div className={styles.thirdLine}></div>
+
+                <div className={styles.forthLine}></div>
+              </div>
+            </button>
+
+
+            {filterPage && FilterSectionBackgroundCircle()}
+            {filterPage && getBackgroundFilterImage()}
+            {filterPage && <FilterSection></FilterSection>}
+            <button
+              onClick={onClickFilter}
+              className={styles.filterButtonDefault}
+            >
               <svg
-                className={styles.searchIcon}
+                className={styles.filterIcon}
                 xmlns="http://www.w3.org/2000/svg"
                 width="29"
-                height="25"
-                viewBox="0 0 29 25"
+                height="33"
+                viewBox="0 0 29 33"
                 fill="none"
               >
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
-                  d="M15.6864 9.28001C15.6864 12.2697 13.099 14.6933 9.9072 14.6933C6.71544 14.6933 4.128 12.2697 4.128 9.28001C4.128 6.2903 6.71544 3.86667 9.9072 3.86667C13.099 3.86667 15.6864 6.2903 15.6864 9.28001ZM15.4503 16.9727C13.8684 17.9748 11.9607 18.56 9.9072 18.56C4.4356 18.56 0 14.4052 0 9.28001C0 4.1548 4.4356 0 9.9072 0C15.3788 0 19.8144 4.1548 19.8144 9.28001C19.8144 10.6483 19.4982 11.9475 18.9306 13.1169L27.9677 20.2198C29.1902 21.1807 29.3497 22.888 28.3239 24.0331C27.2981 25.1782 25.4755 25.3276 24.2529 24.3667L15.2004 17.2516L15.4503 16.9727Z"
+                  d="M12.0792 17.6424V29.6533L16.9208 27.1038L16.9209 17.6423L25.3393 2.73775H3.6607L12.0792 17.6424ZM17.4234 26.8392L17.422 26.8399C17.4224 26.8397 17.4229 26.8395 17.4234 26.8392ZM27.6588 0C28.6897 0 29.334 1.14073 28.8186 2.05331L19.5992 18.3758L19.5992 27.6817C19.5992 28.3519 19.2329 28.966 18.6499 29.273L11.9541 32.7989C10.7886 33.4126 9.40088 32.5477 9.40088 31.2076V18.376L0.181414 2.05331C-0.334036 1.14073 0.310276 0 1.34117 0H27.6588Z"
                   fill="#1B547B"
                 />
               </svg>
             </button>
           </div>
-          <button
-            className={`${styles.sortingbutton}`}
-            onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-          >
-            <div
-              className={`${styles.sortingIcon} ${sortOrder === "desc" ? styles.sorting : ""
-                }`}
-            >
-              <div className={styles.firstLine}></div>
+        )}
 
-              <div className={styles.secondLine}></div>
-
-              <div className={styles.thirdLine}></div>
-
-              <div className={styles.forthLine}></div>
-            </div>
-          </button>
-
-
-          {filterPage && FilterSectionBackgroundCircle()}
-          {filterPage && getBackgroundFilterImage()}
-          {filterPage && <FilterSection></FilterSection>}
-          <button
-            onClick={onClickFilter}
-            className={styles.filterButtonDefault}
-          >
-            <svg
-              className={styles.filterIcon}
-              xmlns="http://www.w3.org/2000/svg"
-              width="29"
-              height="33"
-              viewBox="0 0 29 33"
-              fill="none"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12.0792 17.6424V29.6533L16.9208 27.1038L16.9209 17.6423L25.3393 2.73775H3.6607L12.0792 17.6424ZM17.4234 26.8392L17.422 26.8399C17.4224 26.8397 17.4229 26.8395 17.4234 26.8392ZM27.6588 0C28.6897 0 29.334 1.14073 28.8186 2.05331L19.5992 18.3758L19.5992 27.6817C19.5992 28.3519 19.2329 28.966 18.6499 29.273L11.9541 32.7989C10.7886 33.4126 9.40088 32.5477 9.40088 31.2076V18.376L0.181414 2.05331C-0.334036 1.14073 0.310276 0 1.34117 0H27.6588Z"
-                fill="#1B547B"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
+      {digimonId && actualPage == actualPageOptions.details && (
+        <DigimonDetails
+          digimonId={digimonId}
+          selectDigimon={setDigimonId}
+        />
+      )}
+      {actualPage == actualPageOptions.list && (
+        <div className={styles.listGroup}>
 
-      <div className={styles.listGroup}>
-        {/* starting the list of digimons */}
+          {/* starting the list of digimons */}
 
-        <div className={`${styles.backgroundDigimonIcons}`}>
-          {/* <Image
+          <div className={`${styles.backgroundDigimonIcons}`}>
+            {/* <Image
             src={backgroundDigimonIcon1}
             alt="Digimon logo"
             className={styles.digimonLogo}
             width={100}
             priority
           /> */}
-        </div>
-
-        <DigimonList
-          selectDigimon={setDigimonId}
-          selectSort={sortOrder}
-          searchDigimon={search}
-          filterValue={filterValue}
-          AttributeValue={attributeValue}
-        />
-      </div>
-
-      {/* right/main part of the page 
-      <div className={styles.mainRight}>
-        {/* detalles de digimon */}
-      {/* 
-        <div className={styles.subRightpage}>
-          {/* details section */}
-      {/*
-          {digimonId && (
-            <DigimonDetails
-              digimonId={digimonId}
-              selectDigimon={setDigimonId}
-            />
-          )}
-      </div>
-       */}
-      {/*
-    </div>
-    */}
-      {/* footer */}
-      <footer className={styles.footerDiv}>
-        {/* footer text */}
-        <div className={styles.digimonLogoGroup}>
-          <p>FROM THE</p>
-          <Image
-            src={digimonlogo}
-            alt="Digimon logo"
-            className={styles.digimonLogo}
-            width={100}
-            priority
-          />
-          <p>WORLD</p>
-        </div>
-        <div className={styles.footerCredits}>
-          <p>
-            made with{" "}
-            <Image
-              src={heartIcon}
-              alt="Heart icon"
-              className={styles.heartIcon}
-              width={15}
-              priority
-            />{" "}
-            by Christopher Hayling
-          </p>
-
-          {/* social links */}
-          <div className={styles.socialGroup}>
-            <a href="https://github.com/chr1st0ph3r9">
-              <Image
-                src={githubIcon}
-                alt="Github link"
-                className={styles.githubIcon}
-                width={25}
-                priority
-              />
-            </a>
-
-            <a href="https://www.linkedin.com/in/christopher19/">
-              <Image
-                src={linkedinIcon}
-                alt="Linkedin link"
-                className={styles.linkedinIcon}
-                width={25}
-                priority
-              />
-            </a>
           </div>
+
+
+
+
+          <DigimonList
+            selectDigimon={setDigimonId}
+            selectSort={sortOrder}
+            searchDigimon={search}
+            filterValue={filterValue}
+            AttributeValue={attributeValue}
+            selectPage={setActualPage}
+          />
+
+
+
         </div>
-      </footer>
+      )}
+
+      {/* footer */}
+
+      {actualPage == actualPageOptions.list && (
+
+        <footer className={styles.footerDiv}>
+          {/* footer text */}
+          <div className={styles.digimonLogoGroup}>
+            <p>FROM THE</p>
+            <Image
+              src={digimonlogo}
+              alt="Digimon logo"
+              className={styles.digimonLogo}
+              width={100}
+              priority
+            />
+            <p>WORLD</p>
+          </div>
+          <div className={styles.footerCredits}>
+            <p>
+              made with{" "}
+              <Image
+                src={heartIcon}
+                alt="Heart icon"
+                className={styles.heartIcon}
+                width={15}
+                priority
+              />{" "}
+              by Christopher Hayling
+            </p>
+
+            {/* social links */}
+            <div className={styles.socialGroup}>
+              <a href="https://github.com/chr1st0ph3r9">
+                <Image
+                  src={githubIcon}
+                  alt="Github link"
+                  className={styles.githubIcon}
+                  width={25}
+                  priority
+                />
+              </a>
+
+              <a href="https://www.linkedin.com/in/christopher19/">
+                <Image
+                  src={linkedinIcon}
+                  alt="Linkedin link"
+                  className={styles.linkedinIcon}
+                  width={25}
+                  priority
+                />
+              </a>
+            </div>
+          </div>
+        </footer>
+
+      )}
+
     </main>
   );
 

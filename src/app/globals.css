@@ -24,6 +24,7 @@ body {
   background-color: var(--color-background-light-blue);
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 p {

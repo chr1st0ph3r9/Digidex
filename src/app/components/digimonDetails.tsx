@@ -16,7 +16,7 @@ export default function DigimonDetails({
 }) {
   const { data: digimonResponse } = useSWR<digimonResponse>(
     `https://www.digi-api.com/api/v1/digimon/${digimonId}`,
-    (url) => fetch(url).then((r) => r.json())
+    (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
 
   type digimonResponse = {

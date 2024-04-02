@@ -542,7 +542,7 @@ export default function Home() {
       </div>
     );
 
-  }, [filterPage]);
+  }, []);
 
 
   //to be implemented

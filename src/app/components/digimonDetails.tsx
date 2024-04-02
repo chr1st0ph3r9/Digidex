@@ -179,6 +179,7 @@ export default function DigimonDetails({
 
         </div>
         <div className={styles.about}>
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           <div className={styles.aboutTitle}><h3>about</h3><div className={styles.aboutTitleIcon}>"</div></div>
 
 

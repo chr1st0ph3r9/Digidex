@@ -70,7 +70,7 @@ export default function DigimonList({
 
   const { data: listSize } = useSWR<DigimonResponse>(
     `https://www.digi-api.com/api/v1/digimon`,
-    (url) => fetch(url).then((r) => r.json())
+    (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
 
   //list of digimons
@@ -91,7 +91,7 @@ export default function DigimonList({
 
   const { data: digimons } = useSWR<DigimonResponse>(
     `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`,
-    (url) => fetch(url).then((r) => r.json())
+    (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
 
   //ejemplo de link de filtro de nivel

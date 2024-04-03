@@ -43,15 +43,19 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [search, setSearch] = useState<string | "">("");
   const [inputValue, setInputValue] = useState<string | "">("");
+
+
+
+
   const [filterPage, setFilterPage] = useState<true | false>(false);
   const [backgroundStyle, setBackgroundStyle] = useState<
     "notClosing" | "closing" | "opened"
   >("notClosing");
   const [filterValue, setFilterValue] = useState<string | "">("");
   const [attributeValue, setAttributeValue] = useState<string | "">("");
-
   const [tempFilterValue, setTempFilterValue] = useState<string | "">("");
   const [tempAttributeValue, setTempAttributeValue] = useState<string | "">("");
+
 
 
 
@@ -74,7 +78,24 @@ export default function Home() {
     }, 1000);
   };
 
-  function onClickFilter() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const onClickFilter = React.useCallback(() => {
     if (filterPage == true) {
       setAttributeValue(tempAttributeValue);
       setFilterValue(tempFilterValue);
@@ -93,7 +114,7 @@ export default function Home() {
       setBackgroundStyle("opened");
 
     }
-  }
+  }, [filterPage, tempAttributeValue, tempFilterValue]);
 
 
   const getBackgroundFilterImage = React.useCallback(() => {
@@ -129,7 +150,7 @@ export default function Home() {
     );
   }, [backgroundStyle]);
 
-  function onClickFilterAttributeButtom(selectFilter: string) {
+  const onClickFilterAttributeButtom = React.useCallback((selectFilter: string) => {
 
 
 
@@ -142,9 +163,10 @@ export default function Home() {
       setTempAttributeValue(selectFilter);
     }
 
-  }
+  }, [tempAttributeValue]);
 
-  function onClickFilterButtom(selectFilter: string) {
+
+  const onClickFilterButtom = React.useCallback((selectFilter: string) => {
 
     if (selectFilter == tempFilterValue) {
       setTempFilterValue("");
@@ -154,11 +176,10 @@ export default function Home() {
       setTempFilterValue(selectFilter);
     }
 
-  }
+  }, [tempFilterValue]);
+
 
   const FilterInfo = React.useCallback(() => {
-
-
     return (
       <div className={styles.filterinfoComponentGroup}>
         <h2 className={styles.sortTitle}>SORT BY</h2>
@@ -395,7 +416,7 @@ export default function Home() {
             <div className={styles.filterAtributeInfoGroup}>
               <button
                 onClick={() => onClickFilterAttributeButtom("Variable")}
-                className={`${attributeValue === "Variable"
+                className={`${tempAttributeValue === "Variable"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -418,7 +439,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Free")}
-                className={`${attributeValue === "Free"
+                className={`${tempAttributeValue === "Free"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -440,7 +461,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Vaccine")}
-                className={`${attributeValue === "Vaccine"
+                className={`${tempAttributeValue === "Vaccine"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -462,7 +483,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Virus")}
-                className={`${attributeValue === "Virus"
+                className={`${tempAttributeValue === "Virus"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -484,7 +505,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Data")}
-                className={`${attributeValue === "Data"
+                className={`${tempAttributeValue === "Data"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -506,7 +527,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("No Data")}
-                className={`${attributeValue === "No Data"
+                className={`${tempAttributeValue === "No Data"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -528,7 +549,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => onClickFilterAttributeButtom("Unknown")}
-                className={`${attributeValue === "Unknown"
+                className={`${tempAttributeValue === "Unknown"
                   ? styles.filterActiveAttribute
                   : styles.filterOffAttribute
                   }`}
@@ -541,16 +562,14 @@ export default function Home() {
         </div>
       </div>
     );
-
-  }, []);
-
+  }, [attributeValue, onClickFilterAttributeButtom, onClickFilterButtom, tempFilterValue])
 
   //to be implemented
   function FilterSectionBackgroundCircle() {
     return <div className={`${styles.filterSectionBackgroundCircle}${backgroundStyle === "closing" ? styles.filterSectionBackgroundCircleEnding : ""}`} />;
   }
 
-  function FilterSection() {
+  const filterSection = React.useCallback(() => {
     return (
       <div
         className={`${styles.filterSectionBackground} ${backgroundStyle === "closing" ? styles.filterSectionBackgroundEnding : ""
@@ -604,7 +623,23 @@ export default function Home() {
         </div>
       </div>
     );
-  }
+  }, [backgroundStyle, attributeValue, filterValue, FilterInfo, onClickFilter]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -734,7 +769,7 @@ export default function Home() {
 
             {filterPage && FilterSectionBackgroundCircle()}
             {filterPage && getBackgroundFilterImage()}
-            {filterPage && <FilterSection></FilterSection>}
+            {filterPage && filterSection()}
             <button
               onClick={onClickFilter}
               className={styles.filterButtonDefault}

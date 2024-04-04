@@ -562,7 +562,7 @@ export default function Home() {
         </div>
       </div>
     );
-  }, [attributeValue, onClickFilterAttributeButtom, onClickFilterButtom, tempFilterValue])
+  }, [onClickFilterAttributeButtom, onClickFilterButtom, tempAttributeValue, tempFilterValue])
 
   //to be implemented
   function FilterSectionBackgroundCircle() {

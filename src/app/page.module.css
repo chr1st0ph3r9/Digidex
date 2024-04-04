@@ -1108,22 +1108,73 @@ import .main {
 .priorDigimons,
 .nextDigimons {
   font-family: var(--font-general);
-  margin-top: 170px;
-  height: 50%;
-  width: 250px;
+
+
   text-align: center;
   position: fixed;
+  width: 30vw;
+  height: 70vh;
+  border: none;
+  background: none;
+  cursor: pointer;
 
 }
 
 .priorDigimons {
   left: -180px;
-  top: 90px;
+  top: 120px;
+
+}
+
+.priorDigimons:hover {
+
+
+
+
+  .priorEvolutionImgComplete {
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+}
+
+.priorDigimons:hover img {
+
+  transform: translateX(100px);
+  transition: all 0.5s ease;
+}
+
+.priorDigimons:hover h3 {
+  transform: translateY(50px);
+  color: #333;
+  transition: all 0.5s ease;
 }
 
 .nextDigimons {
-  right: 0;
-  top: 75px;
+  right: -115px;
+  top: 95px;
+}
+
+.nextDigimons:hover {
+
+
+
+
+  .nextEvolutionImgComplete {
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+}
+
+.nextDigimons:hover img {
+
+  transform: translateX(-100px);
+  transition: all 0.5s ease;
+}
+
+.nextDigimons:hover h3 {
+  transform: translateY(-50px);
+  color: #333;
+  transition: all 0.5s ease;
 }
 
 .priorDigimons h3,
@@ -1138,32 +1189,41 @@ import .main {
   width: fit-content;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #333;
+  position: relative;
+  z-index: 5;
+  transition: all 0.5s ease;
 
 }
 
-.priorDigimons button {
-  background-color: white;
-  border: 0;
-  cursor: pointer;
-  opacity: 0.5;
+
+.priorDigimons img {
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  left: -225px;
+  top: 160px;
+  z-index: 1;
+  transition: all 0.5s ease;
 }
 
-.priorDigimons button:hover {
-  opacity: 1.0;
+.nextDigimons img {
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  right: -170px;
+  top: 95px;
+
 }
 
-.priorDigimons ul {
-  list-style-type: none;
-  padding: 0;
+.priorEvolutionImgComplete {
+  opacity: 0;
+  transition: all 0.5s ease;
 
 }
 
-.priorDigimons ul p {
-  text-align: center;
-  font-family: var(--fonts-family);
-  font-weight: var(--font-bold);
-  color: var(--color-dark-blue);
-  font-size: 20px;
+.nextEvolutionImgComplete {
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 
 
@@ -1203,7 +1263,7 @@ import .main {
   text-align: center;
 }
 
-.mainDetailsGroup p {
+.digimonDetailsGroup p {
   font-family: var(--fonts-family);
   font-weight: var(--font-regular);
   color: var(--color-dark-blue);
@@ -1288,19 +1348,61 @@ import .main {
   border-radius: 50%;
 }
 
-.about p {
-  font-size: 15px;
-  line-height: 1.5;
+.aboutDescription {
+  font-family: var(--fonts-family);
+  font-size: 1.5rem;
+  line-height: 24px;
+
+
 }
 
 .skills {
   margin-top: 4vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 .skills p {
   font-size: 15px;
   line-height: 1.5;
+  font-family: var(--fonts-family);
 }
+
+.skillsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.skillsTitle div {
+  background-color: var(--color-dark-blue);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillsTitle div img {
+  width: 20px;
+  height: auto;
+}
+
+.skillsList li::marker {
+  font-size: 300%;
+  color: var(--color-dark-blue);
+}
+
+.skillsList li p:first-child {
+  font-weight: 800;
+  font-size: 20px;
+  font-family: var(--fonts-family);
+}
+
+
 
 .footerDiv {
   display: flex;

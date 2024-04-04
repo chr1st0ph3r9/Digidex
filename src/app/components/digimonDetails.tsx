@@ -7,6 +7,16 @@ import useSWR from "swr";
 import { type } from "os";
 import { Lovers_Quarrel } from "next/font/google";
 
+import attackIcon from "/Materials/attacksIcon.svg"
+
+import priorEvolutionImgShape from "/Materials/priorFormShape.svg"
+import priorEvolutionImgComplete from "/Materials/priorFormComplete.svg"
+
+import nextEvolutionImgShape from "/Materials/digiEvolveShape.svg"
+import nextEvolutionImgComplete from "/Materials/digiEvolveComplete.svg"
+
+
+
 export default function DigimonDetails({
   digimonId,
   selectDigimon,
@@ -79,11 +89,29 @@ export default function DigimonDetails({
     condition: string;
   };
 
-
   return (
     <div className={styles.mainDetailsGroup}>
-      <div className={styles.priorDigimons}>
+      <button className={styles.priorDigimons}>
         <h3>PRIOR-FORM</h3>
+        <Image
+
+          className={styles.priorEvolutionImgShape}
+          src={priorEvolutionImgShape}
+          width={100}
+          height={100}
+          alt="Digimon image"
+        />
+
+        <Image
+
+          className={styles.priorEvolutionImgComplete}
+          src={priorEvolutionImgComplete}
+          width={100}
+          height={100}
+          alt="Digimon image"
+        />
+
+
         {/*
         <ul>
           {digimonResponse?.priorEvolutions &&
@@ -109,7 +137,7 @@ export default function DigimonDetails({
               );
             })}
         </ul> */}
-      </div>
+      </button>
       <div className={styles.digimonGroup}>
         <h2 className={styles.digimonName}>{digimonResponse?.name}</h2>
 
@@ -169,30 +197,47 @@ export default function DigimonDetails({
             })}
         </div>
         <div className={styles.scrollIconGroup}>
-          <p>scroll <Image
-            className={styles.scrollIcon}
-            src={scrollIcon}
-            alt="Arrow down"
-            width={100}
-          /> for more!</p>
-
-
+          <p>
+            scroll{" "}
+            <Image
+              className={styles.scrollIcon}
+              src={scrollIcon}
+              alt="Arrow down"
+              width={100}
+            />{" "}
+            for more!
+          </p>
         </div>
         <div className={styles.about}>
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          <div className={styles.aboutTitle}><h3>about</h3><div className={styles.aboutTitleIcon}>"</div></div>
+          <div className={styles.aboutTitle}>
+            <h3>about</h3>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            <div className={styles.aboutTitleIcon}>"</div>
+          </div>
+          <p className={styles.aboutDescription}>
 
-
-          {digimonResponse?.descriptions[1] &&
-            digimonResponse.descriptions[1].language == "en_us" &&
-            digimonResponse.descriptions[1].description}
-          {digimonResponse?.descriptions[0] &&
-            digimonResponse.descriptions[0].language == "en_us" &&
-            digimonResponse.descriptions[0].description}
+            {digimonResponse?.descriptions[1] &&
+              digimonResponse.descriptions[1].language == "en_us" &&
+              digimonResponse.descriptions[1].description}
+            {digimonResponse?.descriptions[0] &&
+              digimonResponse.descriptions[0].language == "en_us" &&
+              digimonResponse.descriptions[0].description}
+          </p>
         </div>
         <div className={styles.skills}>
-          <h3>skills</h3>
-          <ul>
+          <div className={styles.skillsTitle}>
+            <h3>skills</h3>{" "}
+            <div>
+              <Image
+                className={styles.attackIcon}
+                src={attackIcon}
+                alt="Arrow down"
+                width={100}
+              />
+            </div>
+          </div>
+
+          <ul className={styles.skillsList}>
             {digimonResponse?.skills &&
               digimonResponse.skills.map((skill) => {
                 return (
@@ -205,9 +250,28 @@ export default function DigimonDetails({
           </ul>
         </div>
       </div>
-      <div className={styles.nextDigimons}>
-
+      <button className={styles.nextDigimons}>
         <h3>DIGIEVOLVE</h3>
+
+        <Image
+
+          className={styles.nextEvolutionImgShape}
+          src={nextEvolutionImgShape}
+          width={100}
+          height={100}
+          alt="Digimon image"
+        />
+
+        <Image
+
+          className={styles.nextEvolutionImgComplete}
+          src={nextEvolutionImgComplete}
+          width={100}
+          height={100}
+          alt="Digimon image"
+        />
+
+
         {/* <ul>
           {digimonResponse?.nextEvolutions &&
             digimonResponse.nextEvolutions.map((nextevolution) => {
@@ -232,7 +296,7 @@ export default function DigimonDetails({
               );
             })}
         </ul> */}
-      </div>
+      </button>
     </div>
   );
 }

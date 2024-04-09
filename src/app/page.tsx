@@ -78,23 +78,6 @@ export default function Home() {
     }, 1000);
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const onClickFilter = React.useCallback(() => {
     if (filterPage == true) {
       setAttributeValue(tempAttributeValue);
@@ -115,7 +98,6 @@ export default function Home() {
 
     }
   }, [filterPage, tempAttributeValue, tempFilterValue]);
-
 
   const getBackgroundFilterImage = React.useCallback(() => {
     return (
@@ -623,7 +605,7 @@ export default function Home() {
         </div>
       </div>
     );
-  }, [backgroundStyle, attributeValue, filterValue, FilterInfo, onClickFilter]);
+  }, [backgroundStyle, tempAttributeValue, tempFilterValue, FilterInfo, onClickFilter]);
 
 
 
@@ -636,8 +618,21 @@ export default function Home() {
   return (
     //entire page
     <main className={styles.main}>
-      {/* Nav bar */}
 
+      {/* 
+      <video
+        autoPlay
+        loop
+        muted
+        className={styles.preloadVideo}
+      >
+        <source
+          src="/videos/digidexVideo2.0.mp4"
+          type="video/mp4"
+        />
+      </video> */}
+
+      {/* switching button */}
       {digimonId && filterPage == false && <button className={styles.closeDetailsButton} onClick={() => actualPage == actualPageOptions.details ? setActualPage(actualPageOptions.list) : setActualPage(actualPageOptions.details)}>
 
         {actualPage == actualPageOptions.list &&
@@ -677,6 +672,8 @@ export default function Home() {
 
 
       </button>}
+
+      {/* Nav bar */}
       <div className={styles.bar}>
         {/* left part of the navbar */}
         {/* Right part of the navbar */}
@@ -775,12 +772,16 @@ export default function Home() {
         )}
 
       </div>
+
+      {/* details page */}
       {digimonId && actualPage == actualPageOptions.details && (
         <DigimonDetails
           digimonId={digimonId}
           selectDigimon={setDigimonId}
         />
       )}
+
+      {/* listo of digimons section */}
       {actualPage == actualPageOptions.list && (
         <div className={styles.listGroup}>
 
@@ -814,7 +815,6 @@ export default function Home() {
       )}
 
       {/* footer */}
-
       {actualPage == actualPageOptions.list && (
 
         <footer className={styles.footerDiv}>

@@ -591,7 +591,7 @@ export default function Home() {
           <Image
             src={checkedFilter}
             alt="checked"
-            className={`${attributeValue || filterValue
+            className={`${tempAttributeValue || tempFilterValue
               ? styles.checkedFilterOn
               : styles.checkedFilterOff
               }`}
@@ -628,25 +628,6 @@ export default function Home() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // cambiar icono al clickear
 
 
@@ -657,7 +638,7 @@ export default function Home() {
     <main className={styles.main}>
       {/* Nav bar */}
 
-      {digimonId && <button className={styles.closeDetailsButton} onClick={() => actualPage == actualPageOptions.details ? setActualPage(actualPageOptions.list) : setActualPage(actualPageOptions.details)}>
+      {digimonId && filterPage == false && <button className={styles.closeDetailsButton} onClick={() => actualPage == actualPageOptions.details ? setActualPage(actualPageOptions.list) : setActualPage(actualPageOptions.details)}>
 
         {actualPage == actualPageOptions.list &&
           <svg

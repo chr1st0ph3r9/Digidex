@@ -1,0 +1,129 @@
+.nextFormsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    padding: 5vh 0px;
+    justify-content: space-between;
+
+}
+
+.nextFormsBackground img {
+
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    mix-blend-mode: color-dodge;
+
+}
+
+.nextEvolutionImgShape {
+    top: 40px;
+    transform: rotate(45deg);
+    right: 60px;
+}
+
+.nextEvolutionImgComplete {
+    bottom: -100px;
+    left: 205px;
+    transform: rotate(-45deg);
+}
+
+.nextFormsCloseButton {
+    border: none;
+    background-color: var(--color-dark-blue);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 45px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.nextFormsCloseButton:hover .closeNextFormsSvg {
+
+    transform: rotate(180deg);
+    transition: all 0.5s ease;
+}
+
+.nextFormsSection h3 {
+    font-family: var(--fonts-family);
+    font-weight: var(--font-bold);
+    color: var(--color-dark-blue);
+    font-size: 7rem;
+    text-transform: uppercase;
+    margin: 0px;
+    max-width: 70vw;
+}
+
+.nextFormsGroup {
+    display: flex;
+    overflow-x: scroll;
+    width: 100vw;
+    justify-content: flex-start;
+    gap: 2rem;
+    list-style: none;
+    height: 360px;
+
+
+
+
+
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.nextFormsGroup::-webkit-scrollbar {
+    display: none;
+}
+
+.nextFormsGroup li {
+
+    display: flex;
+    align-items: center;
+}
+
+.nextFormsGroup button:hover .digimonImage {
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+    filter: grayscale(0);
+
+
+
+}
+
+.nextFormsGroup button:hover p {
+    font-size: 3.5rem;
+    transition: all 0.5s ease;
+}
+
+.nextFormsGroup button {
+    border: none;
+    display: flex;
+    font-size: 3rem;
+    background: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nextFormsGroup p {
+    font-size: 3rem;
+    writing-mode: tb;
+    transform: rotate(180deg);
+    transition: all 0.5s ease;
+}
+
+.digimonImage {
+    filter: grayscale(0.5);
+    width: 300px;
+    height: auto;
+    mix-blend-mode: multiply;
+    transition: all 0.5s ease;
+}

@@ -512,16 +512,19 @@ import .main {
   top: 50px;
   width: 0px;
   height: 0px;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  top: 50px;
 }
 
 .checkedFilterOn {
 
   position: absolute;
   animation-name: checkedFilterAnimation;
-  animation-duration: 3s;
+  animation-duration: 1s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
+  top: 50px;
 
 
 }
@@ -530,31 +533,19 @@ import .main {
   0% {
 
     opacity: 0;
-    top: -100px;
 
 
   }
 
-  10% {
+
+  50% {
     opacity: 1;
   }
 
-  35% {
-    opacity: 1;
-    top: 50px;
 
-  }
-
-
-
-
-  90% {
-    opacity: 1;
-  }
 
   100% {
     opacity: 0;
-    top: 50px;
 
   }
 
@@ -994,7 +985,7 @@ import .main {
 }
 
 .closeDetailsButton:hover .closeDetailsSvg {
-  transform: rotate(180deg);
+  transform: rotate(225deg);
   transition: all 0.5s ease;
 }
 
@@ -1212,6 +1203,7 @@ import .main {
   position: fixed;
   right: -170px;
   top: 95px;
+  transition: all 0.5s ease;
 
 }
 

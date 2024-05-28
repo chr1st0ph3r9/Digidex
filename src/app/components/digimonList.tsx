@@ -69,7 +69,7 @@ export default function DigimonList({
   //sort icon
 
   const { data: listSize } = useSWR<DigimonResponse>(
-    `https://www.digi-api.com/api/v1/digimon`,
+    `https://digi-api.com/api/v1/digimon`,
     (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
 
@@ -90,9 +90,11 @@ export default function DigimonList({
   }, [AttributeValue, , filterValue]);
 
   const { data: digimons } = useSWR<DigimonResponse>(
-    `https://www.digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`,
+    `https://digi-api.com/api/v1/digimon?pageSize=${listSizeNumber}${filterLevel}${filterAttribute}`,
     (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
+
+
 
   //ejemplo de link de filtro de nivel
   //https://www.digi-api.com/api/v1/digimon?level=perfect

@@ -29,6 +29,7 @@ enum actualPageOptions {
 
 }
 
+
 export default function DigimonDetails({
   digimonId,
   selectDigimon,
@@ -37,7 +38,7 @@ export default function DigimonDetails({
   selectDigimon: (digimonId: number) => void;
 }) {
   const { data: digimonResponse } = useSWR<digimonResponse>(
-    `https://www.digi-api.com/api/v1/digimon/${digimonId}`,
+    `https://digi-api.com/api/v1/digimon/${digimonId}`,
     (url: RequestInfo | URL) => fetch(url).then((r) => r.json())
   );
 
